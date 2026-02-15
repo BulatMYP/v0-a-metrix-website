@@ -1,11 +1,11 @@
+javascript
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: 'export',   // обязательно для генерации статики
   images: {
-    unoptimized: true,
+    unoptimized: true, // если используете next/image
   },
-}
+  // trailingSlash: true, // опционально
+};
 
-export default nextConfig
+export default nextConfig;
