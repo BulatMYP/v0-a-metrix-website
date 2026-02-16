@@ -23,27 +23,26 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center">
               <Image
-                src="https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site1031578/d068ce38-de60-456e-b2be-3110970e4ada/d068ce38-de60-456e-b2be-3110970e4ada-13592320.png"
-                alt="APEX Metrical"
-                width={32}
-                height={32}
-                className="h-8 w-auto"
+                src="/logo.svg"
+                alt="ФЛАГМАН.Tech"
+                width={150}
+                height={60}
+                className="h-12 w-auto"
               />
-              <span className="font-semibold">APEX Metrical</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Экосистема для предпринимателей: от образовательных курсов до экспертных услуг по привлечению инвестиций.
             </p>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Mail className="h-4 w-4" />
-              <a href="mailto:hello@apex-metrical.ru" className="hover:text-foreground transition-colors">
-                hello@apex-metrical.ru
+              <a href="mailto:hello@flgmn.tech" className="hover:text-foreground transition-colors">
+                hello@flgmn.tech
               </a>
             </div>
             <p className="text-sm text-muted-foreground">
-              www.apex-metrical.ru
+              www.flgmn.tech
             </p>
           </div>
 
@@ -118,7 +117,7 @@ export function Footer() {
 
         <div className="mt-12 border-t pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © 2017—2026 APEX Metrical. Все права защищены.
+            © 2017—2026 ФЛАГМАН.Tech (APEX METRICAL). Все права защищены.
           </p>
         </div>
       </div>
