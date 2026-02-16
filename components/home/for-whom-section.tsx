@@ -44,13 +44,13 @@ const segments = [
       "Хочу быстро оценить финансовые последствия стратегических решений (новый филиал, продуктовая линейка)",
       "Хочу подготовить бизнес к продаже или привлечению стратегического инвестора с максимальной оценкой"
     ],
-    bigJob: "Перевести бизнес из режима постоянного \"тушения пожаров\" в режим управляемого роста и завершить стратегическую транзакцию с максимальной выгодой, чтобы капитализировать многолетние усилия и перейти к новому этапу.",
+    bigJob: "Перевести бизнес из режима постоянного \"тушения пожаров\" в режим управляемого роста и завершить стратегическую транзакцию с максимальной выгодой",
     coreJobs: [
       "Внедрение автоматизированной системы управленческого учёта с наглядными дашбордами",
       "Настройка KPI-системы для эффективного контроля при делегировании",
       "Финансовое моделирование для оценки инвестиционных решений и сделок",
       "Подготовка инвестиционного меморандума и due diligence пакета",
-      "Переход на международные стандарты отчётности (IFRS) при необходимости"
+      "Переход на международные стандарты отчётности"
     ]
   }
 ]
@@ -65,8 +65,8 @@ export function ForWhomSection() {
           </h2>
         </div>
         
-        <div className="grid gap-8 lg:grid-cols-3">
-          {segments.map((segment) => (
+        <div className="grid gap-8 lg:grid-cols-2">
+          {segments.slice(0, 2).map((segment) => (
             <Card key={segment.name} className="relative overflow-hidden">
               <CardHeader>
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
@@ -87,12 +87,12 @@ export function ForWhomSection() {
                     ))}
                   </ul>
                 </div>
-                
+
                 <div className="rounded-lg bg-secondary/50 p-4">
                   <h4 className="text-sm font-medium mb-2">Ваша главная задача:</h4>
                   <p className="text-sm text-muted-foreground">{segment.bigJob}</p>
                 </div>
-                
+
                 <div>
                   <h4 className="text-sm font-medium mb-3">Что вам нужно:</h4>
                   <ul className="space-y-2">
@@ -107,6 +107,56 @@ export function ForWhomSection() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <div className="max-w-2xl w-full">
+            {(() => {
+              const ThirdSegment = segments[2]
+              const ThirdSegmentIcon = ThirdSegment.icon
+              return (
+                <Card className="relative overflow-hidden">
+                  <CardHeader>
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                      <ThirdSegmentIcon className="h-6 w-6 text-foreground" />
+                    </div>
+                    <CardTitle className="text-xl">{ThirdSegment.name}</CardTitle>
+                    <p className="text-muted-foreground leading-relaxed">{ThirdSegment.description}</p>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div>
+                      <h4 className="text-sm font-medium mb-3 text-muted-foreground">Знакомые ситуации:</h4>
+                      <ul className="space-y-2">
+                        {ThirdSegment.triggers.map((trigger) => (
+                          <li key={trigger} className="flex items-start gap-2 text-sm">
+                            <span className="text-muted-foreground">—</span>
+                            <span>{trigger}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="rounded-lg bg-secondary/50 p-4">
+                      <h4 className="text-sm font-medium mb-2">Ваша главная задача:</h4>
+                      <p className="text-sm text-muted-foreground">{ThirdSegment.bigJob}</p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-medium mb-3">Что вам нужно:</h4>
+                      <ul className="space-y-2">
+                        {ThirdSegment.coreJobs.map((job) => (
+                          <li key={job} className="flex items-start gap-2 text-sm">
+                            <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                            <span>{job}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })()}
+          </div>
         </div>
       </div>
     </section>
