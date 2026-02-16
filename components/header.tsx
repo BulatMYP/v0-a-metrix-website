@@ -21,15 +21,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo_flgmn.svg"
             alt="ФЛАГМАН.Tech"
             width={180}
-            height={80}
-            className="h-10 w-auto"
+            height={72}
+            className="h-14 w-auto"
           />
-          <span className="text-lg font-semibold tracking-tight">APEX Metrical</span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
