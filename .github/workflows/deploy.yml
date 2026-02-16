@@ -1,9 +1,9 @@
-aml
+yaml
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]   # или ваша основная ветка (может быть master)
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
-      - run: npm run build   # собирает проект в папку out
+      - run: npm install
+      - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
