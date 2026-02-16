@@ -1,11 +1,9 @@
-javascript
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',   // обязательно для генерации статики
+  output: 'export',
   images: {
-    unoptimized: true, // если используете next/image
+    unoptimized: true,
   },
-  // trailingSlash: true, // опционально
 };
 
 export default nextConfig;
