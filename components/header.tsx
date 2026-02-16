@@ -23,7 +23,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo_flgmn.svg"
+            src="/logo_flgmn0.png"
             alt="ФЛАГМАН.Tech"
             width={180}
             height={72}
