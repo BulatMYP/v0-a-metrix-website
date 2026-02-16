@@ -23,10 +23,10 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site1031578/d068ce38-de60-456e-b2be-3110970e4ada/d068ce38-de60-456e-b2be-3110970e4ada-13592320.png"
-            alt="APEX Metrical"
-            width={40}
-            height={40}
+            src="/logo_flgmn.svg"
+            alt="ФЛАГМАН.Tech"
+            width={180}
+            height={80}
             className="h-10 w-auto"
           />
           <span className="text-lg font-semibold tracking-tight">APEX Metrical</span>
