@@ -1,17 +1,3 @@
-<svg width="600" height="180" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .flagman { font-family: 'Helvetica', 'Arial', sans-serif; font-weight: 700; fill: #0D1B2A; }
-    .tech { font-family: 'Helvetica', 'Arial', sans-serif; font-weight: 500; fill: #E63946; }
-    .sub { font-family: 'Helvetica', 'Arial', sans-serif; }
-  </style>
-  
-  <!-- Основная строка: ФЛАГМАН/tech -->
-  <text x="20" y="60" class="flagman" font-size="48">ФЛАГМАН</text>
-  <text x="250" y="55" class="tech" font-size="36">/tech</text>
-  
-  <!-- Вторая строка: Бизнес-акселератор от APEX METRICAL (ближе к первой) -->
-  <text x="20" y="110" font-family="Helvetica, Arial, sans-serif">
-    <tspan font-size="18" fill="#0D1B2A">Бизнес-акселератор</tspan>
-    <tspan font-size="14" fill="#6C757D"> от APEX METRICAL</tspan>
-  </text>
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <image href="logo_flgmn0.png" width="600" height="200" preserveAspectRatio="xMidYMid meet" />
 </svg>
