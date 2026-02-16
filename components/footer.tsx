@@ -25,10 +25,10 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center">
               <Image
-                src="/logo.svg"
+                src="/logo_flgmn.svg"
                 alt="ФЛАГМАН.Tech"
-                width={150}
-                height={60}
+                width={35}
+                height={6}
                 className="h-12 w-auto"
               />
             </Link>
