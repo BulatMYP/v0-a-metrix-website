@@ -54,7 +54,7 @@ const courses = [
 
 export function CoursesSection() {
   return (
-    <section id="courses" className="py-20 md:py-28 bg-secondary/30">
+    <section id="courses" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">B2C</Badge>

@@ -1,11 +1,14 @@
-import Link from "next/link"
-import Image from "next/image"
-import { MapPin, Phone, Clock, Mail } from "lucide-react"
+'use client'
 
-const navLinks = [
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { MapPin, Phone, Clock, Mail } from "lucide-react"
+import { CustomLogo } from "@/components/custom-logo"
+
+const footerNavLinks = [
   { href: "/", label: "Главная" },
-  { href: "#courses", label: "Курсы" },
-  { href: "#services", label: "Услуги" },
+  { href: "#courses", label: "Курсы", anchor: "#courses" },
+  { href: "#services", label: "Услуги", anchor: "#services" },
   { href: "/about", label: "О компании" },
   { href: "/contact", label: "Контакты" },
 ]
@@ -18,20 +21,26 @@ const additionalLinks = [
 ]
 
 export function Footer() {
+  const pathname = usePathname()
+
+  const handleFooterNavClick = (link: typeof footerNavLinks[0]) => {
+    if (pathname === '/') {
+      if (link.anchor) {
+        window.location.hash = link.anchor
+      }
+    } else if (link.anchor) {
+      window.location.href = `/?section=${link.anchor.substring(1)}`
+    } else {
+      window.location.href = link.href
+    }
+  }
+
   return (
     <footer className="border-t bg-card">
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo-footer.png"
-                alt="Флагман/Tech"
-                width={100}
-                height={60}
-                className="h-12 w-auto"
-              />
-            </Link>
+            <CustomLogo variant="footer" />
             <p className="text-sm text-muted-foreground leading-relaxed">
               Экосистема для предпринимателей: от образовательных курсов до экспертных услуг по привлечению инвестиций.
             </p>
@@ -49,14 +58,14 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-sm font-semibold">Навигация</h3>
             <nav className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link
+              {footerNavLinks.map((link) => (
+                <button
                   key={link.href}
-                  href={link.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  onClick={() => handleFooterNavClick(link)}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground text-left cursor-pointer bg-transparent border-none p-0"
                 >
                   {link.label}
-                </Link>
+                </button>
               ))}
             </nav>
           </div>

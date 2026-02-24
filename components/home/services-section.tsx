@@ -159,7 +159,7 @@ const caseStudy = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 md:py-28 bg-card">
+    <section id="services" className="py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-16">

@@ -126,3 +126,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Light background section styles */
+.bg-white {
+  --background: #FFFFFF;
+  --foreground: #0D1B2A;
+  --card: #F5F5F5;
+  --card-foreground: #0D1B2A;
+  --muted-foreground: #666666;
+  --border: #E0E0E0;
+  --input: #F5F5F5;
+  --secondary: #E8EEF5;
+  --secondary-foreground: #0D1B2A;
+}
+
+.bg-white * {
+  @apply border-gray-300;
+}
