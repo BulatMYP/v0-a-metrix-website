@@ -77,28 +77,30 @@ export function CustomLogo({ variant = 'header', isDark = true }: CustomLogoProp
             /Tech
           </span>
         </div>
-        <span
-          style={{
-            fontSize: '18px',
-            fontWeight: 400,
-            color: textColor,
-            fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          }}
-        >
-          Бизнес-акселератор
-        </span>
-        <span
-          style={{
-            fontSize: '14px',
-            fontWeight: 400,
-            color: '#5A7A8F',
-            fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px',
-          }}
-        >
-          от APEX METRICAL
-        </span>
+        <div className="flex items-center gap-2">
+          <span
+            style={{
+              fontSize: '18px',
+              fontWeight: 400,
+              color: textColor,
+              fontFamily: 'Inter, Helvetica, Arial, sans-serif',
+            }}
+          >
+            Бизнес-акселератор
+          </span>
+          <span
+            style={{
+              fontSize: '14px',
+              fontWeight: 400,
+              color: '#5A7A8F',
+              fontFamily: 'Inter, Helvetica, Arial, sans-serif',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px',
+            }}
+          >
+            от APEX METRICAL
+          </span>
+        </div>
       </div>
     </Link>
   )
