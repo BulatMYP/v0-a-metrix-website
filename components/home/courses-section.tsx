@@ -94,7 +94,7 @@ export function CoursesSection() {
                     )}
                   </div>
                   {course.discount && (
-                    <span className="text-sm font-semibold text-accent mt-1">
+                    <span className="text-sm font-semibold text-white bg-accent px-2 py-1 rounded mt-1 inline-block">
                       Скидка {course.discount}%
                     </span>
                   )}
