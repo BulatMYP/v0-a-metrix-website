@@ -87,17 +87,17 @@ export function CoursesSection() {
                 <CardTitle className="text-lg min-h-14 flex items-start">{course.name}</CardTitle>
                 <CardDescription className="min-h-16 flex items-start">{course.description}</CardDescription>
                 <div className="pt-4 min-h-20 flex flex-col justify-start">
+                  {course.discount && (
+                    <span className="text-sm font-semibold text-accent text-right mb-1">
+                      Скидка {course.discount}%
+                    </span>
+                  )}
                   <div className="flex items-center gap-2">
                     <span className="text-3xl font-bold">{course.price}</span>
                     {course.oldPrice && (
                       <span className="text-lg text-muted-foreground line-through">{course.oldPrice}</span>
                     )}
                   </div>
-                  {course.discount && (
-                    <span className="text-sm font-semibold text-white bg-accent px-2 py-1 rounded mt-1 inline-block">
-                      Скидка {course.discount}%
-                    </span>
-                  )}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Clock className="h-4 w-4" />
