@@ -7,7 +7,9 @@ import { CheckCircle, Clock } from "lucide-react"
 const courses = [
   {
     name: "Базовый: «Экономика и продажи»",
-    price: " 50 000 ₽",
+    price: "55 000 ₽",
+    oldPrice: "85 000 ₽",
+    discount: 35,
     description: "Фундамент для запуска. Рассчитайте рентабельность и настройте первые продажи.",
     includes: [
       "Расчет unit-экономики и точки безубыточности",
@@ -22,7 +24,9 @@ const courses = [
   },
   {
     name: "Профессиональный: «Запуск и масштабирование»",
-    price: " 150 000 ₽",
+    price: "150 000 ₽",
+    oldPrice: undefined,
+    discount: undefined,
     description: "Для первых успехов. Упакуйте проект и подготовьтесь к масштабированию или поиску партнёров.",
     includes: [
       "Всё из Базового тарифа +",
@@ -37,7 +41,9 @@ const courses = [
   },
   {
     name: "VIP: «Стратегия и инвестиции»",
-    price: " 250 000 ₽",
+    price: "250 000 ₽",
+    oldPrice: undefined,
+    discount: undefined,
     description: "Для амбициозных проектов. Подготовьтесь к привлечению инвестиций или продаже доли.",
     includes: [
       "Всё из Профессионального тарифа +",
@@ -70,7 +76,7 @@ export function CoursesSection() {
           {courses.map((course) => (
             <Card 
               key={course.name} 
-              className={`relative flex flex-col ${course.highlighted ? 'border-foreground/20 shadow-lg' : ''}`}
+              className={`relative flex flex-col h-full ${course.highlighted ? 'border-foreground/20 shadow-lg' : ''}`}
             >
               {course.highlighted && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -78,10 +84,20 @@ export function CoursesSection() {
                 </div>
               )}
               <CardHeader>
-                <CardTitle className="text-lg">{course.name}</CardTitle>
-                <CardDescription>{course.description}</CardDescription>
-                <div className="pt-4">
-                  <span className="text-3xl font-bold">{course.price}</span>
+                <CardTitle className="text-lg min-h-14 flex items-start">{course.name}</CardTitle>
+                <CardDescription className="min-h-16 flex items-start">{course.description}</CardDescription>
+                <div className="pt-4 min-h-20 flex flex-col justify-start">
+                  <div className="flex items-center gap-2">
+                    <span className="text-3xl font-bold">{course.price}</span>
+                    {course.oldPrice && (
+                      <span className="text-lg text-muted-foreground line-through">{course.oldPrice}</span>
+                    )}
+                  </div>
+                  {course.discount && (
+                    <span className="text-sm font-semibold text-accent mt-1">
+                      Скидка {course.discount}%
+                    </span>
+                  )}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Clock className="h-4 w-4" />
