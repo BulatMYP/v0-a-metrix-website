@@ -25,8 +25,8 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center">
               <Image
-                src="/logo_flgmn0.png"
-                alt="ФЛАГМАН.Tech"
+                src="/logo-footer.png"
+                alt="Флагман/Tech"
                 width={100}
                 height={60}
                 className="h-12 w-auto"
@@ -68,10 +68,10 @@ export function Footer() {
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                 <div>
                   <a 
-                    href="tel:+79867205517" 
+                    href="tel:+79656027624" 
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    8 986 720 55 17
+                    +7 965 602 7624
                   </a>
                 </div>
               </div>
@@ -117,7 +117,7 @@ export function Footer() {
 
         <div className="mt-12 border-t pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © 2017—2026 ФЛАГМАН.Tech (APEX METRICAL). Все права защищены.
+            © 2017—2026 Флагман/Tech. Все права защищены.
           </p>
         </div>
       </div>
