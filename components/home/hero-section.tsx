@@ -28,16 +28,16 @@ export function HeroSection() {
           <Badge variant="secondary" className="mb-6">
             Экосистема для предпринимателей
           </Badge>
-          
-          <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl">
+
+          <h1 className="w-full text-3xl font-bold tracking-tight text-balance break-words sm:text-4xl md:text-5xl lg:text-6xl">
             От идеи до инвестиций: ваш путь в предпринимательстве
           </h1>
-          
+
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty md:text-xl">
-            Стартуйте с нашими курсами. Масштабируйтесь с нашими экспертами. 
+            Стартуйте с нашими курсами. Масштабируйтесь с нашими экспертами.
             Получите систему знаний для запуска бизнеса и профессиональную упаковку для привлечения финансирования.
           </p>
-          
+
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Button size="lg" asChild>
               <Link href="#courses">Выбрать курс</Link>
@@ -46,7 +46,7 @@ export function HeroSection() {
               <Link href="#services">Обсудить проект</Link>
             </Button>
           </div>
-          
+
           <div className="mt-16 flex flex-col items-center gap-6 md:flex-row md:gap-10">
             {trustIndicators.map((indicator) => (
               <div key={indicator.text} className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -57,7 +57,7 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-      
+
 
     </section>
   )
