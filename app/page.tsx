@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -13,8 +13,8 @@ import { FounderSection } from "@/components/home/founder-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { FinalCTASection } from "@/components/home/final-cta-section"
 
-// Выносим логику с useSearchParams в отдельный компонент, который будет обёрнут в Suspense
-function SearchParamsHandler() {
+// Отдельный компонент, использующий useSearchParams
+function ScrollHandler() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -29,8 +29,7 @@ function SearchParamsHandler() {
     }
   }, [searchParams])
 
-  // Этот компонент ничего не рендерит, только выполняет эффект
-  return null
+  return null // компонент ничего не рендерит
 }
 
 export default function HomePage() {
@@ -38,13 +37,18 @@ export default function HomePage() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
+        {/* Оборачиваем компонент с useSearchParams в Suspense */}
+        <Suspense fallback={null}>
+          <ScrollHandler />
+        </Suspense>
+
         {/* Dark blue background */}
         <div className="bg-background">
           <HeroSection />
         </div>
 
-        {/* White background */}
-        <div className="bg-white text-black">
+        {/* Light gray background */}
+        <div className="bg-[#F8F9FA] text-[#0D1B2A]">
           <ForWhomSection />
         </div>
 
@@ -53,8 +57,8 @@ export default function HomePage() {
           <CoursesSection />
         </div>
 
-        {/* White background */}
-        <div className="bg-white text-black">
+        {/* Light gray background */}
+        <div className="bg-[#F8F9FA] text-[#0D1B2A]">
           <ServicesSection />
         </div>
 
@@ -63,8 +67,8 @@ export default function HomePage() {
           <TransformationSection />
         </div>
 
-        {/* White background */}
-        <div className="bg-white text-black">
+        {/* Light gray background */}
+        <div className="bg-[#F8F9FA] text-[#0D1B2A]">
           <FounderSection />
         </div>
 
@@ -73,17 +77,12 @@ export default function HomePage() {
           <TestimonialsSection />
         </div>
 
-        {/* White background */}
-        <div className="bg-white text-black">
+        {/* Light gray background */}
+        <div className="bg-[#F8F9FA] text-[#0D1B2A]">
           <FinalCTASection />
         </div>
       </main>
       <Footer />
-
-      {/* Оборачиваем компонент с useSearchParams в Suspense */}
-      <Suspense fallback={null}>
-        <SearchParamsHandler />
-      </Suspense>
     </div>
   )
 }
