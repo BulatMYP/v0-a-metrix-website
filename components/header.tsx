@@ -20,18 +20,17 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
-  const handleAnchorClick = (link: typeof navLinks[0]) => {
+  const handleNavClick = (link: typeof navLinks[0]) => {
     if (pathname === '/') {
-      // On homepage, just set the hash
+      // On homepage, just use the anchor
       window.location.hash = link.anchor || link.href
-    } else {
+    } else if (link.anchor) {
       // On other pages, navigate to home with section param
-      window.location.href = `/?section=${link.anchor!.substring(1)}`
+      window.location.href = `/?section=${link.anchor.substring(1)}`
+    } else {
+      // Regular navigation for non-anchor links
+      window.location.href = link.href
     }
-    setMobileMenuOpen(false)
-  }
-
-  const handleRegularClick = () => {
     setMobileMenuOpen(false)
   }
 
@@ -41,32 +40,15 @@ export function Header() {
         <CustomLogo variant="header" />
 
         <nav className="hidden items-center gap-6 lg:flex">
-          {navLinks.map((link) => {
-            if (link.anchor) {
-              // Anchor link: render as button with click handler
-              return (
-                <button
-                  key={link.href}
-                  onClick={() => handleAnchorClick(link)}
-                  className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground cursor-pointer bg-transparent border-none p-0"
-                >
-                  {link.label}
-                </button>
-              )
-            } else {
-              // Regular page link: use Next.js Link
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleRegularClick}
-                  className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-                >
-                  {link.label}
-                </Link>
-              )
-            }
-          })}
+          {navLinks.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleNavClick(link)}
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground cursor-pointer bg-transparent border-none p-0"
+            >
+              {link.label}
+            </button>
+          ))}
         </nav>
 
         <div className="hidden lg:block">
@@ -88,30 +70,15 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="border-t lg:hidden">
           <nav className="flex flex-col gap-4 px-4 py-6">
-            {navLinks.map((link) => {
-              if (link.anchor) {
-                return (
-                  <button
-                    key={link.href}
-                    onClick={() => handleAnchorClick(link)}
-                    className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground text-left cursor-pointer bg-transparent border-none p-0"
-                  >
-                    {link.label}
-                  </button>
-                )
-              } else {
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={handleRegularClick}
-                    className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              }
-            })}
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link)}
+                className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground text-left cursor-pointer bg-transparent border-none p-0"
+              >
+                {link.label}
+              </button>
+            ))}
             <Button asChild className="mt-2 w-full">
               <Link href="#audit" onClick={() => setMobileMenuOpen(false)}>
                 Бесплатный аудит
