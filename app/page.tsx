@@ -22,14 +22,23 @@ function ScrollHandler() {
     if (section) {
       const element = document.getElementById(section)
       if (element) {
+        // Даём время на рендер, затем скроллим с учётом высоты хедера
         setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' })
+          const header = document.querySelector('header')
+          const headerHeight = header ? header.offsetHeight : 0
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+          const offsetPosition = elementPosition - headerHeight - 10 // 10px доп. отступа
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
         }, 100)
       }
     }
   }, [searchParams])
 
-  return null // компонент ничего не рендерит
+  return null
 }
 
 export default function HomePage() {
