@@ -85,7 +85,7 @@ export function TransformationSection() {
         
         <div className="hidden md:flex justify-center mt-8">
           <div className="flex items-center gap-2 text-muted-foreground">
-            <span className="text-sm">Ваш путь с APEX Metrical</span>
+            <span className="text-sm">Ваш путь с Флагман/Tech</span>
             <ArrowRight className="h-4 w-4" />
           </div>
         </div>

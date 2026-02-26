@@ -7,7 +7,7 @@ import { ArrowRight, Target, Users, TrendingUp, Award, Zap, BookOpen } from "luc
 
 export const metadata: Metadata = {
   title: "О компании",
-  description: "APEX Metrical — экосистема для предпринимателей: от образовательных курсов до экспертных услуг по привлечению инвестиций. С 2017 года.",
+  description: "Флагман/Tech — экосистема для предпринимателей: от образовательных курсов до экспертных услуг по привлечению инвестиций. С 2017 года.",
 }
 
 const stats = [
@@ -59,7 +59,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">
-                О компании APEX Metrical
+                О компании Флагман/Tech
               </h1>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 Экосистема для предпринимателей: от образовательных курсов до экспертных услуг по привлечению инвестиций. С 2017 года помогаем превращать идеи в успешные бизнесы.
@@ -140,7 +140,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-                Почему выбирают APEX Metrical
+                Почему выбирают Флагман/Tech
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
                 Ключевые отличия от конкурентов

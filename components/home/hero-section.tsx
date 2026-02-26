@@ -15,13 +15,13 @@ export function HeroSection() {
     <section className="relative overflow-hidden py-20 md:py-28 lg:py-36">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/d0-b4-d0-b5-d0-b2-d1-83-d1-88-d0-ba-d0-b0-20-d0-b4-d0-b5-d0-bb-d0-b0-d0-b5-d1-82-20-d0-bf-d0-b8-d1-82-d1-87.jpg"
-          alt="Предприниматель проводит питч-презентацию"
+          src="/images/triumphal-arch.jpg"
+          alt="Триумфальная арка - символ успеха"
           fill
           priority
-          className="object-cover object-center opacity-15"
+          className="object-cover object-center opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background/90" />
       </div>
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="flex flex-col items-center text-center">

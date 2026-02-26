@@ -6,15 +6,15 @@ import { MapPin, Phone, Clock, Mail } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Контакты",
-  description: "Свяжитесь с APEX Metrical для консультации по курсам или упаковке вашего проекта для инвесторов. Офисы в Москве и Казани.",
+  description: "Свяжитесь с Флагман/Tech для консультации по курсам или упаковке вашего проекта для инвесторов. Офисы в Москве и Казани.",
 }
 
 const contactInfo = [
   {
     icon: Phone,
     title: "Телефон",
-    value: "8 986 720 55 17",
-    href: "tel:+79867205517",
+    value: "+7 965 602 7624",
+    href: "tel:+79656027624",
   },
   {
     icon: Clock,
@@ -25,8 +25,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "hello@apex-metrical.ru",
-    href: "mailto:hello@apex-metrical.ru",
+    value: "hello@flgmn.tech",
+    href: "mailto:hello@flgmn.tech",
   },
 ]
 

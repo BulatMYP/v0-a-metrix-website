@@ -1,45 +1,53 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
+import { CustomLogo } from "@/components/custom-logo"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { href: "#courses", label: "Курсы (B2C)" },
-  { href: "#services", label: "Услуги (B2B)" },
-  { href: "#for-whom", label: "Для кого" },
-  { href: "#testimonials", label: "Отзывы" },
+  { href: "/?section=courses", label: "Курсы (B2C)", anchor: "#courses" },
+  { href: "/?section=services", label: "Услуги (B2B)", anchor: "#services" },
+  { href: "/?section=for-whom", label: "Для кого", anchor: "#for-whom" },
+  { href: "/?section=testimonials", label: "Отзывы", anchor: "#testimonials" },
   { href: "/about", label: "О компании" },
   { href: "/contact", label: "Контакты" },
 ]
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  const handleNavClick = (link: typeof navLinks[0]) => {
+    if (pathname === '/') {
+      // On homepage, just use the anchor
+      window.location.hash = link.anchor || link.href
+    } else if (link.anchor) {
+      // On other pages, navigate to home with section param
+      window.location.href = `/?section=${link.anchor.substring(1)}`
+    } else {
+      // Regular navigation for non-anchor links
+      window.location.href = link.href
+    }
+    setMobileMenuOpen(false)
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/logo_flgmn0.png"
-            alt="ФЛАГМАН.Tech"
-            width={180}
-            height={72}
-            className="h-14 w-auto"
-          />
-        </Link>
+      <div className="mx-auto flex h-auto py-3 max-w-6xl items-center justify-between px-4 md:px-6">
+        <CustomLogo variant="header" />
 
         <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
-            <Link
+            <button
               key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+              onClick={() => handleNavClick(link)}
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground cursor-pointer bg-transparent border-none p-0"
             >
               {link.label}
-            </Link>
+            </button>
           ))}
         </nav>
 
@@ -63,14 +71,13 @@ export function Header() {
         <div className="border-t lg:hidden">
           <nav className="flex flex-col gap-4 px-4 py-6">
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => handleNavClick(link)}
+                className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground text-left cursor-pointer bg-transparent border-none p-0"
               >
                 {link.label}
-              </Link>
+              </button>
             ))}
             <Button asChild className="mt-2 w-full">
               <Link href="#audit" onClick={() => setMobileMenuOpen(false)}>

@@ -152,14 +152,14 @@ const advantages = [
 
 const caseStudy = {
   quote:
-    "Благодаря APEX Metrical мы за 6 дней подготовили пакет, который прошёл due diligence в двух фондах параллельно. Инвесторы отметили глубину проработки.",
+    "Благодаря Флагман/Tech мы за 6 дней подготовили пакет, который прошёл due diligence в двух фондах параллельно. Инвесторы отметили глубину проработки.",
   author: "Алексей, CEO EdTech-стартапа",
   result: "2 term sheet за 3 недели, раунд $850K",
 }
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 md:py-28 bg-card">
+    <section id="services" className="py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-16">
