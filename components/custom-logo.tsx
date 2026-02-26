@@ -13,7 +13,7 @@ export function CustomLogo({ variant = 'header', isDark = true }: CustomLogoProp
   
   // Determine colors based on background context
   const flagmanColor = isDark ? '#FFFFFF' : '#0D1B2A'
-  const techColor = '#EF4444' // Red accent (always red)
+  const techColor = '#E63946' // Red accent (always red)
   const textColor = isDark ? '#8A9BA5' : '#5A7A8F' // Gray text (adapts)
 
   if (variant === 'footer') {

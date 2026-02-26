@@ -36,8 +36,8 @@ export default function HomePage() {
           <HeroSection />
         </div>
         
-        {/* White background */}
-        <div className="bg-white text-black">
+        {/* Light gray background */}
+        <div className="bg-[#F8F9FA] text-[#0D1B2A]">
           <ForWhomSection />
         </div>
         
@@ -46,8 +46,8 @@ export default function HomePage() {
           <CoursesSection />
         </div>
         
-        {/* White background */}
-        <div className="bg-white text-black">
+        {/* Light gray background */}
+        <div className="bg-[#F8F9FA] text-[#0D1B2A]">
           <ServicesSection />
         </div>
         
@@ -56,8 +56,8 @@ export default function HomePage() {
           <TransformationSection />
         </div>
         
-        {/* White background */}
-        <div className="bg-white text-black">
+        {/* Light gray background */}
+        <div className="bg-[#F8F9FA] text-[#0D1B2A]">
           <FounderSection />
         </div>
         
@@ -66,8 +66,8 @@ export default function HomePage() {
           <TestimonialsSection />
         </div>
         
-        {/* White background */}
-        <div className="bg-white text-black">
+        {/* Light gray background */}
+        <div className="bg-[#F8F9FA] text-[#0D1B2A]">
           <FinalCTASection />
         </div>
       </main>
