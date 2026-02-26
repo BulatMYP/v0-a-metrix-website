@@ -1,108 +1,30 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 interface CustomLogoProps {
   variant?: 'header' | 'footer'
-  isDark?: boolean
+  isDark?: boolean // оставлено для совместимости, но не используется
 }
 
-export function CustomLogo({ variant = 'header', isDark = true }: CustomLogoProps) {
-  const pathname = usePathname()
-  
-  // Determine colors based on background context
-  const flagmanColor = isDark ? '#FFFFFF' : '#0D1B2A'
-  const techColor = '#E63946' // Red accent (always red)
-  const textColor = isDark ? '#8A9BA5' : '#5A7A8F' // Gray text (adapts)
+export function CustomLogo({ variant = 'header' }: CustomLogoProps) {
+  // Выбираем размеры в зависимости от варианта
+  const imageHeight = variant === 'header' ? 40 : 30 // пикселей
+  const imageClassName = variant === 'header'
+    ? 'h-10 md:h-12 w-auto'  // на мобильных 40px, на десктопе 48px
+    : 'h-8 w-auto'           // для футера 32px
 
-  if (variant === 'footer') {
-    return (
-      <Link href="/" className="inline-block">
-        <div className="flex flex-col gap-0.5">
-          <div className="flex items-baseline gap-1">
-            <span
-              style={{
-                fontSize: '24px',
-                fontWeight: 700,
-                color: flagmanColor,
-                fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-                letterSpacing: '-0.5px',
-              }}
-            >
-              ФЛАГМАН
-            </span>
-            <span
-              style={{
-                fontSize: '18px',
-                fontWeight: 500,
-                color: techColor,
-                fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-              }}
-            >
-              /Tech
-            </span>
-          </div>
-        </div>
-      </Link>
-    )
-  }
-
-  // Header variant (larger)
   return (
-    <Link href="/" className="inline-block">
-      <div className="flex flex-col gap-1">
-        <div className="flex items-baseline gap-1.5">
-          <span
-            style={{
-              fontSize: '48px',
-              fontWeight: 700,
-              color: flagmanColor,
-              fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-              letterSpacing: '-1px',
-              lineHeight: 1,
-            }}
-          >
-            ФЛАГМАН
-          </span>
-          <span
-            style={{
-              fontSize: '36px',
-              fontWeight: 500,
-              color: techColor,
-              fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-              lineHeight: 1,
-            }}
-          >
-            /Tech
-          </span>
-        </div>
-        <div className="flex items-end gap-2">
-          <span
-            style={{
-              fontSize: '18px',
-              fontWeight: 400,
-              color: textColor,
-              fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-              lineHeight: 1.2,
-            }}
-          >
-            Бизнес-акселератор
-          </span>
-          <span
-            style={{
-              fontSize: '14px',
-              fontWeight: 400,
-              color: '#5A7A8F',
-              fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-              letterSpacing: '0.5px',
-              lineHeight: 1.2,
-            }}
-          >
-            от Apex Metrical
-          </span>
-        </div>
-      </div>
+    <Link href="/" className="inline-block shrink-0">
+      <Image
+        src="/images/logo_flgmnw.png"
+        alt="Флагман / Tech"
+        width={200}        // достаточная ширина для пропорций
+        height={imageHeight}
+        className={imageClassName}
+        priority           // логотип грузим сразу
+      />
     </Link>
   )
 }
