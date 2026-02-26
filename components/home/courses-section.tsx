@@ -94,7 +94,7 @@ export function CoursesSection() {
                     )}
                   </div>
                   {course.discount && (
-                    <span className="text-sm font-semibold mt-1" style={{ color: '#DC2626' }}>
+                    <span className="text-sm font-semibold text-red-600 mt-1">
                       Скидка {course.discount}%
                     </span>
                   )}
