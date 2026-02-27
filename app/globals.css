@@ -146,13 +146,13 @@
   @apply border-gray-300;
 }
 
-/* === ДОБАВЛЕНО: отступы для якорей, чтобы не перекрывались хедером === */
+/* === ОТСТУПЫ ДЛЯ ЯКОРЕЙ, ЧТОБЫ НЕ ПЕРЕКРЫВАТЬ ХЕДЕРОМ === */
 #courses,
 #services,
 #for-whom,
 #testimonials,
 #audit {
-  scroll-margin-top: 80px; /* высота фиксированного хедера + запас */
+  scroll-margin-top: 70px; /* уменьшил для ПК */
 }
 
 @media (max-width: 768px) {
@@ -161,6 +161,6 @@
   #for-whom,
   #testimonials,
   #audit {
-    scroll-margin-top: 70px; /* чуть меньше для мобильных, подберите под свою вёрстку */
+    scroll-margin-top: 90px; /* увеличил для мобильных */
   }
 }
