@@ -145,3 +145,22 @@
 .bg-white * {
   @apply border-gray-300;
 }
+
+/* === ДОБАВЛЕНО: отступы для якорей, чтобы не перекрывались хедером === */
+#courses,
+#services,
+#for-whom,
+#testimonials,
+#audit {
+  scroll-margin-top: 80px; /* высота фиксированного хедера + запас */
+}
+
+@media (max-width: 768px) {
+  #courses,
+  #services,
+  #for-whom,
+  #testimonials,
+  #audit {
+    scroll-margin-top: 70px; /* чуть меньше для мобильных, подберите под свою вёрстку */
+  }
+}
