@@ -8,12 +8,12 @@ import { CustomLogo } from "@/components/custom-logo"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { href: "/?section=courses", label: "Курсы (B2C)", anchor: "#courses" },
-  { href: "/?section=services", label: "Услуги (B2B)", anchor: "#services" },
+  { href: "/?section=courses", label: "Курсы", anchor: "#courses" },
+  { href: "/?section=services", label: "Услуги", anchor: "#services" },
   { href: "/?section=for-whom", label: "Для кого", anchor: "#for-whom" },
   { href: "/?section=testimonials", label: "Отзывы", anchor: "#testimonials" },
   { href: "/about", label: "О компании" },
-  { href: "/contact", label: "Контакты" },
+  { href: "/?section=contacts", label: "Контакты", anchor: "#contacts" },
 ]
 
 export function Header() {

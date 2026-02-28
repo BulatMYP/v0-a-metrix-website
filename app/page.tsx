@@ -12,6 +12,7 @@ import { TransformationSection } from "@/components/home/transformation-section"
 import { FounderSection } from "@/components/home/founder-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { FinalCTASection } from "@/components/home/final-cta-section"
+import { ContactsSection } from "@/components/home/contacts-section"
 
 // Отдельный компонент, использующий useSearchParams
 function ScrollHandler() {
@@ -88,6 +89,11 @@ export default function HomePage() {
 
         {/* Light gray background */}
         <div className="bg-[#F8F9FA] text-[#0D1B2A]">
+          <ContactsSection />
+        </div>
+
+        {/* Dark blue background */}
+        <div className="bg-background">
           <FinalCTASection />
         </div>
       </main>
