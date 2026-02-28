@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/?section=services", label: "Услуги", anchor: "#services" },
   { href: "/?section=for-whom", label: "Для кого", anchor: "#for-whom" },
   { href: "/?section=testimonials", label: "Отзывы", anchor: "#testimonials" },
-  { href: "/about", label: "О компании" },
+  { href: "/?section=about", label: "О компании", anchor: "#about" },
   { href: "/?section=contacts", label: "Контакты", anchor: "#contacts" },
 ]
 

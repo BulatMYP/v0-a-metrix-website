@@ -9,8 +9,8 @@ const footerNavLinks = [
   { href: "/", label: "Главная" },
   { href: "#courses", label: "Курсы", anchor: "#courses" },
   { href: "#services", label: "Услуги", anchor: "#services" },
-  { href: "/about", label: "О компании" },
-  { href: "/contact", label: "Контакты" },
+  { href: "/?section=about", label: "О компании", anchor: "#about" },
+  { href: "/?section=contacts", label: "Контакты", anchor: "#contacts" },
 ]
 
 const additionalLinks = [
