@@ -243,7 +243,7 @@ export function ContactsSection() {
               <div className="p-6 bg-card border-t border-border">
                 <h4 className="font-semibold text-card-foreground mb-2">Офис в Казани</h4>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  Улица Волочаевская, 6, помещение 39, офис 31
+                  Улица Декабристов, 2, здание 2, офис 8
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Пн-Пт: 10:00-19:00
