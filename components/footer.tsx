@@ -111,7 +111,7 @@ export function Footer() {
               <div className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                 <span className="text-sm text-muted-foreground leading-relaxed">
-                  Москва, улица Бакунинская 71, строение 10, офис 708
+                  Москва, улица Бакунинская 71, строение 10, офис 106
                 </span>
               </div>
               <div className="flex items-start gap-2">
