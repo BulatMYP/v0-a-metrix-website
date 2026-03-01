@@ -7,9 +7,9 @@ import { CheckCircle, Clock } from "lucide-react"
 const courses = [
   {
     name: "Базовый: «Экономика и продажи»",
-    price: "55 000 ₽",
-    oldPrice: "85 000 ₽",
-    discount: 35,
+    price: "54 900 ₽",
+    oldPrice: "96 000 ₽",
+    discount: 43, // исправлено: указана скидка в процентах
     description: "Фундамент для запуска. Рассчитайте рентабельность и настройте первые продажи.",
     includes: [
       "Расчет unit-экономики и точки безубыточности",
@@ -33,7 +33,7 @@ const courses = [
       "Финансовое моделирование на 2-3 года",
       "Упаковка бизнеса и формирование инвестиционного предложения",
       "Методы масштабирования и аутсорсинга",
-      "Личный разбор проекта +  сессии с ментором"
+      "Личный разбор проекта + сессии с ментором"
     ],
     cta: "Масштабировать бизнес",
     timeline: "2 недели",
@@ -53,7 +53,7 @@ const courses = [
       "Персональное сопровождение 1-на-1 (8 сессий)"
     ],
     cta: "Привлечь инвестиции",
-    timeline: "4 недель",
+    timeline: "4 недели",
     highlighted: false
   }
 ]
@@ -63,24 +63,24 @@ export function CoursesSection() {
     <section id="courses" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">B2C</Badge>
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance">
-            Курсы для начинающих предпринимателей
+          <Badge variant="outline" className="mb-4 border-primary text-primary">B2C</Badge>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
+            Образовательные программы для вашего бизнеса
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Практические программы, чтобы избежать ошибок новичка и запустить бизнес на правильном фундаменте.
+            От первых шагов до привлечения инвестиций — выберите свой уровень.
           </p>
         </div>
-        
+
         <div className="grid gap-6 lg:grid-cols-3">
           {courses.map((course) => (
-            <Card 
-              key={course.name} 
-              className={`relative flex flex-col h-full ${course.highlighted ? 'border-foreground/20 shadow-lg' : ''}`}
+            <Card
+              key={course.name}
+              className={`relative flex flex-col h-full ${course.highlighted ? 'border-primary shadow-lg' : ''}`}
             >
               {course.highlighted && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge>Популярный выбор</Badge>
+                  <Badge className="bg-primary text-primary-foreground">Популярный выбор</Badge>
                 </div>
               )}
               <CardHeader>
@@ -88,13 +88,13 @@ export function CoursesSection() {
                 <CardDescription className="min-h-16 flex items-start">{course.description}</CardDescription>
                 <div className="pt-4 min-h-20 flex flex-col justify-start">
                   <div className="flex items-center gap-2">
-                    <span className="text-3xl font-bold">{course.price}</span>
+                    <span className="text-3xl font-bold text-foreground">{course.price}</span>
                     {course.oldPrice && (
                       <span className="text-lg text-muted-foreground line-through">{course.oldPrice}</span>
                     )}
                   </div>
                   {course.discount && (
-                    <span className="text-sm font-semibold mt-1" style={{ color: '#DC2626' }}>
+                    <span className="text-sm font-semibold mt-1 text-destructive">
                       Скидка {course.discount}%
                     </span>
                   )}
@@ -108,15 +108,15 @@ export function CoursesSection() {
                 <ul className="space-y-3">
                   {course.includes.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
-                      <span>{item}</span>
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <span className="text-card-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button 
-                  className="w-full" 
+                <Button
+                  className="w-full"
                   variant={course.highlighted ? "default" : "outline"}
                   asChild
                 >
@@ -126,7 +126,7 @@ export function CoursesSection() {
             </Card>
           ))}
         </div>
-        
+
         <p className="mt-10 text-center text-sm text-muted-foreground">
           После курсов вы сможете продолжить с нами работу по упаковке проекта для инвесторов.
         </p>
