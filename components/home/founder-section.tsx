@@ -26,7 +26,7 @@ const achievements = [
   {
     icon: Award,
     title: "Экспертиза",
-    description: "Помог 500+ компаниям привлечь инвестиции"
+    description: "Помог 100+ компаниям привлечь инвестиции"
   },
 ]
 
