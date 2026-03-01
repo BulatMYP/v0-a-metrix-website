@@ -20,19 +20,20 @@ const emotions = ["Уверенность", "Контроль над проце�
 
 export function TransformationSection() {
   return (
-    <section className="py-20 md:py-28 bg-secondary/30">
+    <section className="py-20 md:py-28 bg-background">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
             Ваша трансформация: от идеи к результату
           </h2>
         </div>
-        
+
         <div className="grid gap-8 md:grid-cols-2 items-stretch">
-          <Card className="border-destructive/20 bg-destructive/5">
+          {/* Карточка А (Неопределённость) */}
+          <Card className="bg-card/50 border-muted">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-xl">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-destructive/10 text-destructive">
+              <CardTitle className="flex items-center gap-2 text-xl text-card-foreground">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground">
                   A
                 </span>
                 Точка А: Неопределённость
@@ -42,18 +43,19 @@ export function TransformationSection() {
               <ul className="space-y-4">
                 {beforeItems.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <X className="mt-0.5 h-5 w-5 shrink-0 text-destructive/70" />
-                    <span className="text-muted-foreground">{item}</span>
+                    <X className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground/50" />
+                    <span className="text-card-foreground/80">{item}</span>
                   </li>
                 ))}
               </ul>
             </CardContent>
           </Card>
-          
-          <Card className="border-green-500/20 bg-green-500/5">
+
+          {/* Карточка Б (Уверенность) */}
+          <Card className="bg-primary/5 border-primary/20">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-xl">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500/10 text-green-600">
+              <CardTitle className="flex items-center gap-2 text-xl text-card-foreground">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
                   Б
                 </span>
                 Точка Б: Уверенность и контроль
@@ -63,17 +65,17 @@ export function TransformationSection() {
               <ul className="space-y-4">
                 {afterItems.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-green-600" />
-                    <span>{item}</span>
+                    <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                    <span className="text-card-foreground">{item}</span>
                   </li>
                 ))}
               </ul>
-              
-              <div className="pt-4 border-t">
+
+              <div className="pt-4 border-t border-border">
                 <p className="text-sm text-muted-foreground mb-3">Ваши эмоции:</p>
                 <div className="flex flex-wrap gap-2">
                   {emotions.map((emotion) => (
-                    <Badge key={emotion} variant="secondary" className="bg-green-500/10 text-green-700 border-0">
+                    <Badge key={emotion} variant="secondary" className="bg-primary/10 text-primary border-0">
                       {emotion}
                     </Badge>
                   ))}
@@ -82,7 +84,7 @@ export function TransformationSection() {
             </CardContent>
           </Card>
         </div>
-        
+
         <div className="hidden md:flex justify-center mt-8">
           <div className="flex items-center gap-2 text-muted-foreground">
             <span className="text-sm">Ваш путь с Флагман/Tech</span>
