@@ -159,14 +159,14 @@ const caseStudy = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 md:py-28">
+    <section id="services" className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
             B2B
           </Badge>
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
             Экспертные услуги для вашего бизнеса
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -200,16 +200,16 @@ export function ServicesSection() {
                 </Button>
               </div>
               <div
-                className={`rounded-lg border border-border bg-background p-8 ${index % 2 === 1 ? "lg:order-1" : ""}`}
+                className={`rounded-lg border border-border bg-[#1A2634] p-8 ${index % 2 === 1 ? "lg:order-1" : ""}`}
               >
-                <h4 className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-6">
+                <h4 className="text-sm font-medium uppercase tracking-wider text-white/60 mb-6">
                   Что входит
                 </h4>
                 <ul className="space-y-4">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-foreground/70 flex-shrink-0 mt-0.5" />
-                      <span className="text-card-foreground">{feature}</span>
+                      <Check className="h-5 w-5 text-white/70 flex-shrink-0 mt-0.5" />
+                      <span className="text-white">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -221,7 +221,7 @@ export function ServicesSection() {
         {/* Process */}
         <div className="mb-24">
           <div className="text-center mb-12">
-            <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
+            <h3 className="text-2xl font-semibold tracking-tight md:text-3xl text-foreground">
               Мы готовим ваш инвестиционный пакет под ключ
             </h3>
             <p className="mt-4 text-muted-foreground">
@@ -264,12 +264,12 @@ export function ServicesSection() {
             {advantages.map((advantage, index) => (
               <div
                 key={index}
-                className="rounded-lg border border-border bg-background p-6"
+                className="rounded-lg border border-border bg-[#1A2634] p-6"
               >
-                <h4 className="font-semibold text-card-foreground">
+                <h4 className="font-semibold text-white">
                   {advantage.title}
                 </h4>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
                   {advantage.description}
                 </p>
               </div>
@@ -282,11 +282,11 @@ export function ServicesSection() {
           <Card className="bg-secondary/50 border-0">
             <CardContent className="p-8 md:p-12">
               <Quote className="h-10 w-10 text-muted-foreground/30 mb-6" />
-              <blockquote className="text-lg md:text-xl leading-relaxed mb-6">
+              <blockquote className="text-lg md:text-xl leading-relaxed mb-6 text-foreground">
                 {caseStudy.quote}
               </blockquote>
               <div className="border-t border-border pt-6">
-                <p className="font-medium">{caseStudy.author}</p>
+                <p className="font-medium text-foreground">{caseStudy.author}</p>
                 <p className="text-sm text-foreground/80 font-medium mt-1">
                   {caseStudy.result}
                 </p>

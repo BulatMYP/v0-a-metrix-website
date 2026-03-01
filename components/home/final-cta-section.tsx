@@ -29,10 +29,13 @@ export function FinalCTASection() {
             Сделайте первый шаг к бизнесу вашей мечты
           </h2>
         </div>
-        
+
         <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
           {ctaOptions.map((option) => (
-            <Card key={option.title} className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground">
+            <Card
+              key={option.title}
+              className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground"
+            >
               <CardHeader>
                 <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-foreground/10">
                   <option.icon className="h-6 w-6" />
@@ -43,9 +46,9 @@ export function FinalCTASection() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button 
-                  variant="secondary" 
-                  className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90" 
+                <Button
+                  variant="secondary"
+                  className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90"
                   asChild
                 >
                   <Link href={option.href}>{option.button}</Link>

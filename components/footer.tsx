@@ -9,8 +9,8 @@ const footerNavLinks = [
   { href: "/", label: "Главная" },
   { href: "#courses", label: "Курсы", anchor: "#courses" },
   { href: "#services", label: "Услуги", anchor: "#services" },
-  { href: "/about", label: "О компании" },
-  { href: "/contact", label: "Контакты" },
+  { href: "/?section=about", label: "О компании", anchor: "#about" },
+  { href: "/?section=contacts", label: "Контакты", anchor: "#contacts" },
 ]
 
 const additionalLinks = [
@@ -76,8 +76,8 @@ export function Footer() {
               <div className="flex items-start gap-2">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                 <div>
-                  <a 
-                    href="tel:+79656027624" 
+                  <a
+                    href="tel:+79656027624"
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     +7 965 602 7624
@@ -117,7 +117,7 @@ export function Footer() {
               <div className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                 <span className="text-sm text-muted-foreground leading-relaxed">
-                  Казань, улица Волочаевская, 6, помещение 39, офис 31
+                  Казань, улица Декабристов, 2, здание 2, офис 8
                 </span>
               </div>
             </div>
