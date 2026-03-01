@@ -14,9 +14,122 @@ import {
   Quote,
 } from "lucide-react"
 
-const services = [ /* ... без изменений ... */]
+const services = [
+  {
+    id: "financial-modeling",
+    icon: Calculator,
+    title: "Финансовое моделирование",
+    description:
+      "Создаем динамические финансовые модели с несколькими сценариями развития. Модели адаптированы под требования инвесторов любого типа и включают все ключевые метрики.",
+    features: [
+      "P&L на 3-5 лет с помесячной детализацией",
+      "3 сценария: консервативный, реалистичный, агрессивный",
+      "Моделирование cashflow и точки безубыточности",
+      "Анализ чувствительности к ключевым параметрам",
+    ],
+  },
+  {
+    id: "investment-packaging",
+    icon: PresentationIcon,
+    title: "Инвестиционная упаковка",
+    description:
+      "Готовим полный пакет материалов для переговоров с фондами, бизнес-ангелами и частными инвесторами: от одностраничника до развернутого pitch deck.",
+    features: [
+      "Pitch deck на 10-15 слайдов",
+      "Teaser / одностраничник для рассылки",
+      "Investment memorandum",
+      "Подготовка к due diligence",
+    ],
+  },
+  {
+    id: "unit-economics",
+    icon: LineChart,
+    title: "Расчет Unit-экономики",
+    description:
+      "Глубокий анализ unit-экономики вашего продукта с учетом специфики ниши. Определяем точки роста и узкие места.",
+    features: [
+      "Расчет CAC, LTV, Payback Period",
+      "Когортный анализ",
+      "Benchmark по отрасли",
+      "Рекомендации по оптимизации метрик",
+    ],
+  },
+  {
+    id: "strategy",
+    icon: Target,
+    title: "Стратегический консалтинг",
+    description:
+      "Помогаем определить вектор развития компании, сформулировать стратегию и подготовить план достижения целей.",
+    features: [
+      "Стратегические сессии с командой",
+      "Анализ конкурентной среды",
+      "Формулирование OKR и KPI",
+      "Дорожная карта развития",
+    ],
+  },
+  {
+    id: "business-launch",
+    icon: Briefcase,
+    title: "Упаковка и запуск бизнеса",
+    description:
+      "Комплексная подготовка нового бизнеса к запуску: от бизнес-плана до операционных процессов.",
+    features: [
+      "Бизнес-план и финансовая модель",
+      "Организационная структура",
+      "Описание бизнес-процессов",
+      "Маркетинговая стратегия",
+    ],
+  },
+  {
+    id: "sales-training",
+    icon: TrendingUp,
+    title: "Обучение продажам",
+    description:
+      "Продажи — основа любого бизнеса на любой стадии. Обучаем оффлайн-продажам и ДНК продаж — системному подходу к построению отдела продаж.",
+    features: [
+      "Техника оффлайн-продаж",
+      "ДНК продаж — системный подход",
+      "Построение воронки продаж",
+      "Скрипты и работа с возражениями",
+      "Практические тренинги с обратной связью",
+    ],
+  },
+]
 
-const processSteps = [ /* ... без изменений ... */]
+const processSteps = [
+  {
+    step: "1",
+    title: "Аудит и стратегическая сессия",
+    description:
+      "Разбираем текущую модель, находим слабые места, определяем ключевые метрики для вашей ниши",
+    duration: "1 день",
+    deliverable: "Дорожная карта подготовки",
+  },
+  {
+    step: "2",
+    title: "Финансовое моделирование",
+    description:
+      "Строим динамическую модель с 3 сценариями (консервативный, реалистичный, агрессивный)",
+    duration: "2 дня",
+    deliverable: "Интерактивная финансовая модель",
+  },
+  {
+    step: "3",
+    title: "Инвестиционное предложение",
+    description:
+      "Готовим pitch deck, отвечающий на ключевые вопросы инвесторов, и teaser",
+    duration: "1 день",
+    deliverable: "Презентация + Одностраничник",
+  },
+  {
+    step: "4",
+    title: "Репетиция и упаковка",
+    description:
+      "Проводим «репетицию» due diligence, готовим ответы на сложные вопросы",
+    duration: "1 день",
+    deliverable: "Готовность к переговорам",
+  },
+]
 
 const advantages = [
   {
@@ -46,7 +159,7 @@ const caseStudy = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 md:py-28 bg-white"> {/* добавлен bg-white */}
+    <section id="services" className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -151,7 +264,7 @@ export function ServicesSection() {
             {advantages.map((advantage, index) => (
               <div
                 key={index}
-                className="rounded-lg border border-border bg-card p-6" // заменено на bg-card
+                className="rounded-lg border border-border bg-card p-6"
               >
                 <h4 className="font-semibold text-card-foreground">
                   {advantage.title}
