@@ -137,7 +137,7 @@ export function ContactsSection() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Айдар Алферов"
+                        placeholder="Айдар Айдаров"
                         required
                         className="bg-background border-border text-foreground placeholder:text-muted-foreground/50"
                       />
