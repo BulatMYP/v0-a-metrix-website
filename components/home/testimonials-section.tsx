@@ -29,26 +29,27 @@ export function TestimonialsSection() {
 
         <div className="grid gap-8 md:grid-cols-2">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="relative border border-border">
-              <CardContent className="p-8">
-                <Badge variant="secondary" className="mb-6 bg-secondary/10 text-secondary-foreground">
-                  {testimonial.category}
-                </Badge>
+            <div
+              key={testimonial.name}
+              className="rounded-xl border border-border bg-[#1A2634] p-8"
+            >
+              <Badge className="mb-6 bg-white/10 text-white border-0">
+                {testimonial.category}
+              </Badge>
 
-                <Quote className="h-8 w-8 text-muted-foreground/20 mb-4" />
+              <Quote className="h-8 w-8 text-white/20 mb-4" />
 
-                <blockquote className="text-lg leading-relaxed mb-6 text-card-foreground">
-                  {testimonial.quote}
-                </blockquote>
+              <blockquote className="text-lg leading-relaxed mb-6 text-white">
+                {testimonial.quote}
+              </blockquote>
 
-                <div className="border-t border-border pt-4">
-                  <p className="font-medium text-card-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-primary font-medium mt-1">
-                    {testimonial.result}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+              <div className="border-t border-white/10 pt-4">
+                <p className="font-medium text-white">{testimonial.name}</p>
+                <p className="text-sm text-primary font-medium mt-1">
+                  {testimonial.result}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
