@@ -20,11 +20,11 @@ export function HeroSection() {
           alt="Триумфальная арка - символ успеха"
           fill
           priority
-          className="object-cover object-center opacity-40" // увеличена непрозрачность
+          className="object-cover object-center opacity-60" // можно оставить 40-60, но сейчас 40
         />
       </div>
-      {/* Тёмный градиент поверх изображения */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background/90 z-10" />
+      {/* Более прозрачный градиент поверх изображения */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/30 to-background/60 z-10" />
 
       <div className="relative z-20 mx-auto max-w-6xl px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
