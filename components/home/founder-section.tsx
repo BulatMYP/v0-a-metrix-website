@@ -95,11 +95,11 @@ export function FounderSection() {
             {/* Статистика */}
             <div className="mt-12 grid grid-cols-2 gap-4">
               <div className="bg-card/50 border border-border rounded-lg p-4">
-                <p className="text-2xl font-bold text-primary">500+</p>
+                <p className="text-2xl font-bold text-primary">50+</p>
                 <p className="text-xs text-muted-foreground mt-1">компаний обучено</p>
               </div>
               <div className="bg-card/50 border border-border rounded-lg p-4">
-                <p className="text-2xl font-bold text-primary">$200M+</p>
+                <p className="text-2xl font-bold text-primary">200M+</p>
                 <p className="text-xs text-muted-foreground mt-1">привлечено инвестиций</p>
               </div>
             </div>
