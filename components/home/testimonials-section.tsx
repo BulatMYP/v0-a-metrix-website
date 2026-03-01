@@ -19,7 +19,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-background">
+    <section id="testimonials" className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
@@ -29,9 +29,9 @@ export function TestimonialsSection() {
 
         <div className="grid gap-8 md:grid-cols-2">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="relative">
+            <Card key={testimonial.name} className="relative border border-border">
               <CardContent className="p-8">
-                <Badge variant="secondary" className="mb-6">
+                <Badge variant="secondary" className="mb-6 bg-secondary/10 text-secondary-foreground">
                   {testimonial.category}
                 </Badge>
 
