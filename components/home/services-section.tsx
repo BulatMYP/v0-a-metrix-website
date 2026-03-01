@@ -200,16 +200,16 @@ export function ServicesSection() {
                 </Button>
               </div>
               <div
-                className={`rounded-lg border border-border bg-card p-8 ${index % 2 === 1 ? "lg:order-1" : ""}`}
+                className={`rounded-lg border border-border bg-[#1A2634] p-8 ${index % 2 === 1 ? "lg:order-1" : ""}`}
               >
-                <h4 className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-6">
+                <h4 className="text-sm font-medium uppercase tracking-wider text-white/60 mb-6">
                   Что входит
                 </h4>
                 <ul className="space-y-4">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-foreground/70 flex-shrink-0 mt-0.5" />
-                      <span className="text-card-foreground">{feature}</span>
+                      <Check className="h-5 w-5 text-white/70 flex-shrink-0 mt-0.5" />
+                      <span className="text-white">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -264,12 +264,12 @@ export function ServicesSection() {
             {advantages.map((advantage, index) => (
               <div
                 key={index}
-                className="rounded-lg border border-border bg-card p-6"
+                className="rounded-lg border border-border bg-[#1A2634] p-6"
               >
-                <h4 className="font-semibold text-card-foreground">
+                <h4 className="font-semibold text-white">
                   {advantage.title}
                 </h4>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
                   {advantage.description}
                 </p>
               </div>
