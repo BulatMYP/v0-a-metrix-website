@@ -2,14 +2,15 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Clock } from "lucide-react"
+import { CheckCircle, Clock, Rocket, TrendingUp, Gem } from "lucide-react"
 
 const courses = [
   {
     name: "Базовый: «Экономика и продажи»",
+    icon: Rocket,
     price: "54 900 ₽",
     oldPrice: "96 000 ₽",
-    discount: 43, // исправлено: указана скидка в процентах
+    discount: 43,
     description: "Фундамент для запуска. Рассчитайте рентабельность и настройте первые продажи.",
     includes: [
       "Расчет unit-экономики и точки безубыточности",
@@ -24,6 +25,7 @@ const courses = [
   },
   {
     name: "Профессиональный: «Запуск и масштабирование»",
+    icon: TrendingUp,
     price: "150 000 ₽",
     oldPrice: undefined,
     discount: undefined,
@@ -41,6 +43,7 @@ const courses = [
   },
   {
     name: "VIP: «Стратегия и инвестиции»",
+    icon: Gem,
     price: "250 000 ₽",
     oldPrice: undefined,
     discount: undefined,
@@ -84,7 +87,12 @@ export function CoursesSection() {
                 </div>
               )}
               <CardHeader>
-                <CardTitle className="text-lg min-h-14 flex items-start">{course.name}</CardTitle>
+                <div className="flex items-start gap-3 mb-2">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <course.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <CardTitle className="text-lg flex-1">{course.name}</CardTitle>
+                </div>
                 <CardDescription className="min-h-16 flex items-start">{course.description}</CardDescription>
                 <div className="pt-4 min-h-20 flex flex-col justify-start">
                   <div className="flex items-center gap-2">
