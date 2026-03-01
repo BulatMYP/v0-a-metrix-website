@@ -32,11 +32,13 @@ const achievements = [
 
 export function FounderSection() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">ОБ ОСНОВАТЕЛЕ</Badge>
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance mb-4">
+          <Badge variant="outline" className="mb-4 border-primary text-primary">
+            ОБ ОСНОВАТЕЛЕ
+          </Badge>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground mb-4">
             Опыт и экспертиза, которые помогут вашему бизнесу
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -45,11 +47,11 @@ export function FounderSection() {
         </div>
 
         <div className="grid gap-12 md:grid-cols-2 items-center">
-          {/* Левая колона - Изображение */}
+          {/* Левая колонка - Изображение */}
           <div className="relative">
-            <div className="relative aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
+            <div className="relative aspect-square rounded-lg overflow-hidden border border-border ring-1 ring-primary/30">
               <Image
-                src="/images/pitch-process.jpg"
+                src="/images/founder-white-bg.png" // замените на реальное имя файла (рекомендуется без пробелов)
                 alt="Основатель Флагман/Tech"
                 fill
                 className="object-cover"
@@ -57,16 +59,16 @@ export function FounderSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
             </div>
 
-            {/* Floating card with key metrics */}
+            {/* Плавающая карточка с ключевой метрикой */}
             <div className="absolute -bottom-4 -right-4 bg-card border border-border rounded-lg p-4 shadow-lg max-w-xs">
               <p className="text-2xl font-bold text-primary">12+</p>
               <p className="text-sm text-muted-foreground">лет опыта в предпринимательстве</p>
             </div>
           </div>
 
-          {/* Правая колона - Достижения */}
+          {/* Правая колонка - Достижения */}
           <div>
-            <h3 className="text-2xl font-semibold mb-8">
+            <h3 className="text-2xl font-semibold text-foreground mb-8">
               Путь к успеху вашего бизнеса
             </h3>
 
@@ -90,13 +92,13 @@ export function FounderSection() {
               ))}
             </div>
 
-            {/* Stats */}
+            {/* Статистика */}
             <div className="mt-12 grid grid-cols-2 gap-4">
-              <div className="bg-secondary/30 rounded-lg p-4">
+              <div className="bg-card/50 border border-border rounded-lg p-4">
                 <p className="text-2xl font-bold text-primary">500+</p>
                 <p className="text-xs text-muted-foreground mt-1">компаний обучено</p>
               </div>
-              <div className="bg-secondary/30 rounded-lg p-4">
+              <div className="bg-card/50 border border-border rounded-lg p-4">
                 <p className="text-2xl font-bold text-primary">$200M+</p>
                 <p className="text-xs text-muted-foreground mt-1">привлечено инвестиций</p>
               </div>
