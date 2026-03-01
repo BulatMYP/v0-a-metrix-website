@@ -71,6 +71,11 @@
 /* ========== СВЕТЛАЯ ТЕМА (для блоков на белом фоне) ========== */
 .bg-white {
   --background: #F8F9FA;
+  --foreground: #0D1B2A;
+  --card: #1A2634;
+  /* тёмно-синий для карточек */
+  --card-foreground: #FFFFFF;
+  --background: #F8F9FA;
   /* светлый фон */
   --foreground: #0D1B2A;
   /* тёмный текст */
