@@ -3,67 +3,61 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ========== БАЗОВЫЕ ПЕРЕМЕННЫЕ (ТЁМНАЯ ТЕМА ПО УМОЛЧАНИЮ) ========== */
 :root {
+  /* Основные цвета */
   --background: #0D1B2A;
+  /* основной фон (тёмно-синий) */
   --foreground: #FFFFFF;
+  /* основной текст (белый) */
+
   --card: #1A2634;
+  /* фон карточек на тёмном фоне */
   --card-foreground: #FFFFFF;
+  /* текст в карточках (белый) */
+
   --popover: #1A2634;
   --popover-foreground: #FFFFFF;
+
+  /* Акцентный цвет (CTA, иконки) */
   --primary: #F39C12;
+  /* золотисто-оранжевый */
   --primary-foreground: #FFFFFF;
+
+  /* Вторичный цвет (менее важные элементы) */
   --secondary: #5A7A8F;
   --secondary-foreground: #FFFFFF;
+
+  /* Приглушённые цвета (для второстепенного текста, фонов) */
   --muted: #3A4F63;
-  --muted-foreground: #8A9BA5;
+  --muted-foreground: #B0C4DE;
+  /* светлый текст на тёмном фоне (улучшенная читаемость) */
+
+  /* Акцент (дублирует primary, но может использоваться для других целей) */
   --accent: #F39C12;
   --accent-foreground: #FFFFFF;
+
+  /* Цвета для деструктивных действий (например, удалить) */
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
+
+  /* Границы и поля ввода */
   --border: #1F3A52;
   --input: #1A2634;
   --ring: #F39C12;
-  --chart-1: #F39C12;
-  --chart-2: #5A7A8F;
-  --chart-3: #1F3A52;
-  --chart-4: #0D1B2A;
-  --chart-5: #3A4F63;
+  /* цвет обводки при фокусе */
+
+  /* Радиус скругления */
   --radius: 8px;
-  --sidebar: #1A2634;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #F39C12;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #3A4F63;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #1F3A52;
-  --sidebar-ring: #F39C12;
-}
 
-.dark {
-  --background: #0D1B2A;
-  --foreground: #FFFFFF;
-  --card: #1A2634;
-  --card-foreground: #FFFFFF;
-  --popover: #1A2634;
-  --popover-foreground: #FFFFFF;
-  --primary: #F39C12;
-  --primary-foreground: #FFFFFF;
-  --secondary: #5A7A8F;
-  --secondary-foreground: #FFFFFF;
-  --muted: #3A4F63;
-  --muted-foreground: #8A9BA5;
-  --accent: #F39C12;
-  --accent-foreground: #FFFFFF;
-  --destructive: #EF4444;
-  --destructive-foreground: #FFFFFF;
-  --border: #1F3A52;
-  --input: #1A2634;
-  --ring: #F39C12;
+  /* Цвета для графиков (не используются на лендинге, но оставим) */
   --chart-1: #F39C12;
   --chart-2: #5A7A8F;
   --chart-3: #1F3A52;
   --chart-4: #0D1B2A;
   --chart-5: #3A4F63;
+
+  /* Переменные для боковой панели (если есть) */
   --sidebar: #1A2634;
   --sidebar-foreground: #FFFFFF;
   --sidebar-primary: #F39C12;
@@ -74,9 +68,70 @@
   --sidebar-ring: #F39C12;
 }
 
+/* ========== СВЕТЛАЯ ТЕМА (для блоков на белом фоне) ========== */
+.bg-white {
+  --background: #F8F9FA;
+  /* светлый фон */
+  --foreground: #0D1B2A;
+  /* тёмный текст */
+
+  --card: #FFFFFF;
+  /* белые карточки */
+  --card-foreground: #0D1B2A;
+  /* тёмный текст в карточках */
+
+  --popover: #FFFFFF;
+  --popover-foreground: #0D1B2A;
+
+  /* Акцент остаётся тем же, но можно при необходимости изменить */
+  --primary: #F39C12;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #E8EEF5;
+  /* светло-серый для второстепенных блоков */
+  --secondary-foreground: #0D1B2A;
+
+  --muted: #E0E0E0;
+  --muted-foreground: #6C757D;
+  /* серый второстепенный текст */
+
+  --accent: #F39C12;
+  --accent-foreground: #FFFFFF;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #E0E0E0;
+  --input: #F8F9FA;
+  --ring: #F39C12;
+
+  /* Для графиков и боковой панели оставляем как есть или тоже меняем */
+  --chart-1: #F39C12;
+  --chart-2: #5A7A8F;
+  --chart-3: #1F3A52;
+  --chart-4: #0D1B2A;
+  --chart-5: #3A4F63;
+
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0D1B2A;
+  --sidebar-primary: #F39C12;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E8EEF5;
+  --sidebar-accent-foreground: #0D1B2A;
+  --sidebar-border: #E0E0E0;
+  --sidebar-ring: #F39C12;
+}
+
+/* ========== ТЕМНАЯ ТЕМА (если нужна глобальная смена, например для dark mode) ========== */
+.dark {
+  /* можно оставить как :root или синхронизировать */
+}
+
+/* ========== ПОДКЛЮЧЕНИЕ ПЕРЕМЕННЫХ К ТЕМЕ TAILWIND ========== */
 @theme inline {
   --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -101,10 +156,12 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -115,52 +172,48 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ========== БАЗОВЫЕ СТИЛИ ========== */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   html {
     color-scheme: dark;
+    /* можно менять на light, если нужно */
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* Light background section styles */
-.bg-white {
-  --background: #F8F9FA;
-  --foreground: #0D1B2A;
-  --card: #FFFFFF;
-  --card-foreground: #0D1B2A;
-  --muted-foreground: #666666;
-  --border: #E0E0E0;
-  --input: #F8F9FA;
-  --secondary: #E8EEF5;
-  --secondary-foreground: #0D1B2A;
-  --accent: #F39C12;
-  --accent-foreground: #FFFFFF;
-}
-
+/* ========== СТИЛИ ДЛЯ ГРАНИЦ НА СВЕТЛОМ ФОНЕ ========== */
 .bg-white * {
-  @apply border-gray-300;
+  border-color: var(--border);
+  /* используем переменную вместо @apply border-gray-300 */
 }
 
-/* === ОТСТУПЫ ДЛЯ ЯКОРЕЙ, ЧТОБЫ НЕ ПЕРЕКРЫВАТЬ ХЕДЕРОМ === */
+/* ========== ОТСТУПЫ ДЛЯ ЯКОРЕЙ ========== */
 #courses,
 #services,
 #for-whom,
 #testimonials,
-#audit {
-  scroll-margin-top: 70px; /* уменьшил для ПК */
+#audit,
+#about,
+#contact {
+  scroll-margin-top: 70px;
 }
 
 @media (max-width: 768px) {
+
   #courses,
   #services,
   #for-whom,
   #testimonials,
-  #audit {
-    scroll-margin-top: 90px; /* увеличил для мобильных */
+  #audit,
+  #about,
+  #contact {
+    scroll-margin-top: 90px;
   }
 }
