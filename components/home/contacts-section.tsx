@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -52,7 +53,6 @@ export function ContactsSection() {
     setIsLoading(true)
 
     try {
-      // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000))
       setSubmitted(true)
       setFormData({ name: '', email: '', phone: '', message: '' })
@@ -213,17 +213,19 @@ export function ContactsSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Moscow Office */}
             <div className="rounded-lg overflow-hidden border border-border">
-              <div className="h-80 bg-card flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <p className="text-card-foreground font-medium">Москва</p>
-                  <p className="text-sm text-muted-foreground">Интерактивная карта</p>
-                </div>
+              <div className="relative h-80 w-full bg-card">
+                <Image
+                  src="/images/bakuninskoff0.png"
+                  alt="Офис в Москве на улице Бакунинская"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               <div className="p-6 bg-card border-t border-border">
                 <h4 className="font-semibold text-card-foreground mb-2">Офис в Москве</h4>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  Улица Бакунинская 71, строение 10, офис 708
+                  Улица Бакунинская 71, строение 10, офис 106
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Пн-Пт: 10:00-19:00
@@ -233,12 +235,14 @@ export function ContactsSection() {
 
             {/* Kazan Office */}
             <div className="rounded-lg overflow-hidden border border-border">
-              <div className="h-80 bg-card flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <p className="text-card-foreground font-medium">Казань</p>
-                  <p className="text-sm text-muted-foreground">Интерактивная карта</p>
-                </div>
+              <div className="relative h-80 w-full bg-card">
+                <Image
+                  src="/images/idel_pressoffice.jpg"
+                  alt="Офис в Казани"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               <div className="p-6 bg-card border-t border-border">
                 <h4 className="font-semibold text-card-foreground mb-2">Офис в Казани</h4>
