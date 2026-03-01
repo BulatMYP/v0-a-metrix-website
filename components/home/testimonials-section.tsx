@@ -19,14 +19,14 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-20 md:py-28">
+    <section id="testimonials" className="py-20 md:py-28 bg-background">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
             Истории успеха
           </h2>
         </div>
-        
+
         <div className="grid gap-8 md:grid-cols-2">
           {testimonials.map((testimonial) => (
             <Card key={testimonial.name} className="relative">
@@ -34,16 +34,18 @@ export function TestimonialsSection() {
                 <Badge variant="secondary" className="mb-6">
                   {testimonial.category}
                 </Badge>
-                
+
                 <Quote className="h-8 w-8 text-muted-foreground/20 mb-4" />
-                
-                <blockquote className="text-lg leading-relaxed mb-6">
+
+                <blockquote className="text-lg leading-relaxed mb-6 text-card-foreground">
                   {testimonial.quote}
                 </blockquote>
-                
-                <div className="border-t pt-4">
-                  <p className="font-medium">{testimonial.name}</p>
-                  <p className="text-sm text-green-600 font-medium mt-1">{testimonial.result}</p>
+
+                <div className="border-t border-border pt-4">
+                  <p className="font-medium text-card-foreground">{testimonial.name}</p>
+                  <p className="text-sm text-primary font-medium mt-1">
+                    {testimonial.result}
+                  </p>
                 </div>
               </CardContent>
             </Card>
