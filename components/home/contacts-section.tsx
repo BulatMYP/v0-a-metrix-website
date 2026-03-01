@@ -137,7 +137,7 @@ export function ContactsSection() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Иван Петров"
+                        placeholder="Айдар Алферов"
                         required
                         className="bg-background border-border text-foreground placeholder:text-muted-foreground/50"
                       />
@@ -152,7 +152,7 @@ export function ContactsSection() {
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="ivan@example.com"
+                        placeholder="aidar@example.com"
                         required
                         className="bg-background border-border text-foreground placeholder:text-muted-foreground/50"
                       />
@@ -169,7 +169,7 @@ export function ContactsSection() {
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+7 (965) 602-76-24"
+                      placeholder="+7 (999) 000-00-00"
                       className="bg-background border-border text-foreground placeholder:text-muted-foreground/50"
                     />
                   </div>
