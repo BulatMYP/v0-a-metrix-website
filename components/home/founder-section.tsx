@@ -35,7 +35,7 @@ export function FounderSection() {
     <section className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">О СОЗДАТЕЛЕ</Badge>
+          <Badge variant="outline" className="mb-4">ОБ ОСНОВАТЕЛЕ</Badge>
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance mb-4">
             Опыт и экспертиза, которые помогут вашему бизнесу
           </h2>
@@ -56,7 +56,7 @@ export function FounderSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
             </div>
-            
+
             {/* Floating card with key metrics */}
             <div className="absolute -bottom-4 -right-4 bg-card border border-border rounded-lg p-4 shadow-lg max-w-xs">
               <p className="text-2xl font-bold text-primary">12+</p>
@@ -69,7 +69,7 @@ export function FounderSection() {
             <h3 className="text-2xl font-semibold mb-8">
               Путь к успеху вашего бизнеса
             </h3>
-            
+
             <div className="space-y-4">
               {achievements.map((achievement, index) => (
                 <div key={index} className="flex gap-4 group">
