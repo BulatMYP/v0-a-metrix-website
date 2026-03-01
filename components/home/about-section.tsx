@@ -46,11 +46,11 @@ const unifiedAdvantage = "Мы предлагаем сквозной путь: �
 export function AboutSection() {
   return (
     <>
-      {/* Hero */}
-      <section id="about" className="py-20 md:py-28">
+      {/* О компании */}
+      <section id="about" className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">
+            <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl text-foreground">
               О компании Флагман/Tech
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
@@ -61,7 +61,7 @@ export function AboutSection() {
           <div className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-4">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl font-semibold md:text-5xl">{stat.value}</div>
+                <div className="text-4xl font-semibold md:text-5xl text-foreground">{stat.value}</div>
                 <div className="mt-2 text-sm text-muted-foreground">{stat.label}</div>
               </div>
             ))}
@@ -69,12 +69,12 @@ export function AboutSection() {
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="border-t bg-card py-20 md:py-28">
+      {/* Миссия и видение */}
+      <section className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
+              <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl text-foreground">
                 Наша миссия и видение
               </h3>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
@@ -84,9 +84,9 @@ export function AboutSection() {
                 Мы создаём ценность на каждом этапе: практические курсы для начинающих предпринимателей и экспертные услуги по финансовому моделированию и инвестиционной упаковке для растущих стартапов.
               </p>
             </div>
-            <div className="rounded-xl border bg-background p-8">
-              <h4 className="text-xl font-semibold">Наше конкурентное преимущество</h4>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
+            <div className="rounded-xl border border-border bg-[#1A2634] p-8">
+              <h4 className="text-xl font-semibold text-white">Наше конкурентное преимущество</h4>
+              <p className="mt-4 text-white/70 leading-relaxed">
                 {unifiedAdvantage}
               </p>
             </div>
@@ -94,11 +94,11 @@ export function AboutSection() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="border-t py-20 md:py-28">
+      {/* Наши ценности */}
+      <section className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
+            <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl text-foreground">
               Наши ценности
             </h3>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -110,14 +110,14 @@ export function AboutSection() {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="flex gap-5 rounded-xl border bg-card p-6"
+                className="flex gap-5 rounded-xl border border-border bg-[#1A2634] p-6"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-secondary">
-                  <value.icon className="h-6 w-6" />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white/10">
+                  <value.icon className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold">{value.title}</h4>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  <h4 className="font-semibold text-white">{value.title}</h4>
+                  <p className="mt-2 text-sm text-white/70 leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -127,11 +127,11 @@ export function AboutSection() {
         </div>
       </section>
 
-      {/* Key Differentiators */}
-      <section className="border-t bg-card py-20 md:py-28">
+      {/* Почему выбирают Флагман/Tech */}
+      <section className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
+            <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl text-foreground">
               Почему выбирают Флагман/Tech
             </h3>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -143,12 +143,12 @@ export function AboutSection() {
             {differentiators.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-4 rounded-xl border bg-background p-5"
+                className="flex items-center gap-4 rounded-xl border border-border bg-[#1A2634] p-5"
               >
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground text-sm font-medium text-background">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-sm font-medium text-[#0D1B2A]">
                   {index + 1}
                 </div>
-                <p className="text-foreground">{item}</p>
+                <p className="text-white">{item}</p>
               </div>
             ))}
           </div>
