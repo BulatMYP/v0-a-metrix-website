@@ -8,6 +8,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { createClient } from '@supabase/supabase-js'
+
+// Инициализация Supabase с вашими данными
+const supabaseUrl = 'https://lzedhcgtfztqkbyhedig.supabase.co'
+const supabaseAnonKey = 'sb_publishable_UAlkujXbpelJLQxom7EqKA_S8onRLic'
+const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 const contactMethods = [
   {
@@ -25,7 +31,7 @@ const contactMethods = [
   {
     icon: MapPin,
     title: "Адрес (Москва)",
-    value: "Улица Бакунинская 71, строение 10, офис 708",
+    value: "Улица Бакунинская 71, строение 10, офис 106",
     href: "#"
   }
 ]
@@ -39,6 +45,7 @@ export function ContactsSection() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -51,14 +58,31 @@ export function ContactsSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setError(null)
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Вставка данных в таблицу leads
+      const { error } = await supabase
+        .from('leads')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || null,
+            message: formData.message,
+            page_url: window.location.href, // сохраняем, с какой страницы пришла заявка
+          }
+        ])
+
+      if (error) throw error
+
+      // Успех
       setSubmitted(true)
       setFormData({ name: '', email: '', phone: '', message: '' })
       setTimeout(() => setSubmitted(false), 5000)
-    } catch (error) {
-      console.error('Error submitting form:', error)
+    } catch (err) {
+      console.error('Error submitting form:', err)
+      setError('Произошла ошибка при отправке. Попробуйте позже или свяжитесь с нами по телефону.')
     } finally {
       setIsLoading(false)
     }
@@ -127,6 +151,11 @@ export function ContactsSection() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {error && (
+                    <div className="rounded-lg bg-red-950 border border-red-800 p-4 text-center">
+                      <p className="text-red-400 text-sm">{error}</p>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-card-foreground mb-2">
