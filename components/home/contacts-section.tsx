@@ -8,12 +8,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
-import { createClient } from '@supabase/supabase-js'
+import { supabase } from "@/lib/supabase"
 
-// Инициализация Supabase с вашими данными
-const supabaseUrl = 'https://lzedhcgtfztqkbyhedig.supabase.co'
-const supabaseAnonKey = 'sb_publishable_UAlkujXbpelJLQxom7EqKA_S8onRLic'
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
 
 const contactMethods = [
   {
