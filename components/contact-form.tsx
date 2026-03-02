@@ -1,17 +1,17 @@
 "use client"
 
-import React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Send, Check, Loader2 } from "lucide-react"
+import { supabase } from "@/lib/supabase"
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -22,13 +22,32 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || null,
+            message: formData.message || '',
+            page_url: window.location.href,
+            // status будет автоматически 'Новый' благодаря default
+          }
+        ])
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: "", phone: "", email: "", message: "" })
+      if (error) throw error
+
+      setIsSubmitted(true)
+      setFormData({ name: "", phone: "", email: "", message: "" })
+    } catch (err) {
+      console.error('Error submitting form:', err)
+      setError('Ошибка отправки. Попробуйте позже или свяжитесь с нами напрямую.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (
@@ -61,6 +80,11 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+      {error && (
+        <div className="rounded-lg bg-red-950 border border-red-800 p-4 text-center">
+          <p className="text-red-400 text-sm">{error}</p>
+        </div>
+      )}
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">Имя *</Label>
