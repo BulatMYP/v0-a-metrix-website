@@ -2,62 +2,69 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Clock, Rocket, TrendingUp, Gem } from "lucide-react"
+import { CheckCircle, Clock, Rocket, TrendingUp, Gem, GraduationCap } from "lucide-react"
 
 const courses = [
   {
     name: "Базовый: «Экономика и продажи»",
     icon: Rocket,
-    price: "54 900 ₽",
-    oldPrice: "96 000 ₽",
+    price: "39 900 ₽",
+    oldPrice: "69 900 ₽",
     discount: 43,
-    description: "Фундамент для запуска. Рассчитайте рентабельность и настройте первые продажи.",
+    description: "Первый поток для студентов технических вузов. Фундамент для запуска бизнеса: финансы, маркетинг, продажи.",
     includes: [
-      "Расчет unit-экономики и точки безубыточности",
-      "Построение воронки продаж и скриптов",
-      "Основы клиентоориентированного маркетинга",
-      "Шаблоны финансовых таблиц и коммерческих предложений",
-      "Доступ к комьюнити + 2 вебинара с экспертами"
+      "Финансовая модель и unit-экономика",
+      "Сегментация рынка и выбор аудитории (JTBD)",
+      "Комплекс маркетинга и упаковка продукта",
+      "Построение воронки продаж и скрипты",
+      "Основы лидерства для основателя",
+      "Практический план первых 90 дней"
     ],
-    cta: "Начать с основ",
-    timeline: "1 неделя",
-    highlighted: false
+    cta: "Записаться на курс",
+    timeline: "2 недели",
+    highlighted: false,
+    badge: "Первый поток",
+    extraOffer: "Первым 10 — 34 900 ₽"
   },
   {
     name: "Профессиональный: «Запуск и масштабирование»",
     icon: TrendingUp,
-    price: "150 000 ₽",
+    price: "250 000 ₽",
     oldPrice: undefined,
     discount: undefined,
-    description: "Для первых успехов. Упакуйте проект и подготовьтесь к масштабированию или поиску партнёров.",
+    description: "Для основателей с первыми продажами и командой. Систематизация процессов, упаковка бизнеса и масштабирование.",
     includes: [
-      "Всё из Базового тарифа +",
-      "Финансовое моделирование на 2-3 года",
+      "Углублённое финансовое моделирование на 3–5 лет",
+      "Построение и автоматизация отдела продаж",
+      "Управление командой: структура, мотивация, делегирование",
       "Упаковка бизнеса и формирование инвестиционного предложения",
       "Методы масштабирования и аутсорсинга",
-      "Личный разбор проекта + сессии с ментором"
+      "Маркетинговые стратегии роста",
+      "Оптимизация бизнес-процессов"
     ],
     cta: "Масштабировать бизнес",
-    timeline: "2 недели",
-    highlighted: true
+    timeline: "3 недели",
+    highlighted: true,
+    badge: "Популярный выбор"
   },
   {
     name: "VIP: «Стратегия и инвестиции»",
     icon: Gem,
-    price: "250 000 ₽",
+    price: "349 000 ₽",
     oldPrice: undefined,
     discount: undefined,
-    description: "Для амбициозных проектов. Подготовьтесь к привлечению инвестиций или продаже доли.",
+    description: "Интенсивный курс для основателей, готовых к привлечению институциональных инвестиций. Индивидуальная проработка стратегии, финансовой модели и переговорных позиций с действующими инвесторами.",
     includes: [
-      "Всё из Профессионального тарифа +",
-      "Глубокий стратегический консалтинг по развитию",
+      "Инвестиционная упаковка: pitch deck, меморандум, финансовая модель",
       "Подготовка к due diligence и переговорам с инвесторами",
       "Оценка стоимости компании и доли",
-      "Персональное сопровождение 1-на-1 (8 сессий)"
+      "Стратегическое планирование на 3–5 лет",
+      "Менторские сессии с инвесторами (4–6 встреч)"
     ],
     cta: "Привлечь инвестиции",
     timeline: "4 недели",
-    highlighted: false
+    highlighted: false,
+    badge: "VIP"
   }
 ]
 
@@ -81,11 +88,15 @@ export function CoursesSection() {
               key={course.name}
               className={`relative flex flex-col h-full ${course.highlighted ? 'border-primary shadow-lg' : ''}`}
             >
-              {course.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground">Популярный выбор</Badge>
+              {/* Бейдж (если есть) */}
+              {course.badge && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <Badge className={`${course.badge === 'Первый поток' ? 'bg-green-600' : 'bg-primary'} text-primary-foreground whitespace-nowrap`}>
+                    {course.badge}
+                  </Badge>
                 </div>
               )}
+
               <CardHeader>
                 <div className="flex items-start gap-3 mb-2">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
@@ -93,9 +104,12 @@ export function CoursesSection() {
                   </div>
                   <CardTitle className="text-lg flex-1">{course.name}</CardTitle>
                 </div>
+
                 <CardDescription className="min-h-16 flex items-start">{course.description}</CardDescription>
+
+                {/* Ценовой блок */}
                 <div className="pt-4 min-h-20 flex flex-col justify-start">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-3xl font-bold text-foreground">{course.price}</span>
                     {course.oldPrice && (
                       <span className="text-lg text-muted-foreground line-through">{course.oldPrice}</span>
@@ -106,12 +120,28 @@ export function CoursesSection() {
                       Скидка {course.discount}%
                     </span>
                   )}
+                  {course.extraOffer && (
+                    <span className="text-sm font-medium mt-1 text-primary">
+                      {course.extraOffer}
+                    </span>
+                  )}
                 </div>
+
+                {/* Длительность */}
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Clock className="h-4 w-4" />
                   <span>{course.timeline}</span>
                 </div>
+
+                {/* Специально для базового курса: иконка студента */}
+                {course.name.includes("Базовый") && (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
+                    <GraduationCap className="h-4 w-4" />
+                    <span>Студенческий тариф</span>
+                  </div>
+                )}
               </CardHeader>
+
               <CardContent className="flex-1">
                 <ul className="space-y-3">
                   {course.includes.map((item) => (
@@ -122,6 +152,7 @@ export function CoursesSection() {
                   ))}
                 </ul>
               </CardContent>
+
               <CardFooter>
                 <Button
                   className="w-full"
