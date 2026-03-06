@@ -1,16 +1,50 @@
+# Robots.txt для Флагман/Tech - Tech Бизнес-Акселератор
+# Инструкции для поисковых роботов по индексированию сайта
+
+# Стандартные правила для всех ботов
 User-agent: *
 Allow: /
+Allow: /about
+Allow: /contact
 Disallow: /admin
 Disallow: /private
+Disallow: /api
 Disallow: /*.json$
+Disallow: /*?*sort=
 Crawl-delay: 1
 
+# Google Bot - максимальные права и минимальная задержка
 User-agent: Googlebot
 Allow: /
+Allow: /about
+Allow: /contact
+Disallow: /admin
+Disallow: /private
 Crawl-delay: 0
 
+# Yandex Bot - для лучшей индексации в Яндекс
+User-agent: YandexBot
+Allow: /
+Allow: /about
+Allow: /contact
+Disallow: /admin
+Disallow: /private
+Crawl-delay: 0.5
+
+# Bing Bot
 User-agent: Bingbot
 Allow: /
+Allow: /about
+Allow: /contact
+Disallow: /admin
+Disallow: /private
 Crawl-delay: 1
 
+# Mail.ru Bot
+User-agent: Mail.Ru_Bot
+Allow: /
+Crawl-delay: 0.5
+
+# Sitemaps для основного контента
 Sitemap: https://flgmn.tech/sitemap.xml
+Sitemap: https://flgmn.tech/sitemap-ru.xml

@@ -1,5 +1,6 @@
 'use client'
 
+import type { Metadata } from 'next'
 import { Suspense, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Header } from "@/components/header"
@@ -14,6 +15,24 @@ import { FounderSection } from "@/components/home/founder-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { FinalCTASection } from "@/components/home/final-cta-section"
 import { ContactsSection } from "@/components/home/contacts-section"
+
+// SEO Metadata for home page
+export const metadata: Metadata = {
+  title: "Флагман/Tech | Tech Акселератор и Школа Предпринимателей",
+  description: "Tech бизнес-акселератор от APEX Metrical. Курсы по запуску стартапа, консультации по привлечению инвестиций, поддержка AI-проектов. От идеи к инвестициям за 5-7 дней.",
+  keywords: [
+    'флагман tech',
+    'tech акселератор',
+    'школа предпринимателей',
+    'запуск стартапа',
+    'курсы по стартапам',
+    'консультация инвесторы',
+    'AI стартапы',
+    'бизнес-ускоритель',
+    'венчурное финансирование',
+    'упаковка проекта'
+  ]
+}
 
 // Отдельный компонент, использующий useSearchParams
 function ScrollHandler() {
