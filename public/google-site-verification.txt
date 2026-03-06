@@ -1,0 +1,8 @@
+# Добавьте код верификации Google Search Console в этот файл
+# Example: google-site-verification=1234567890abcdefghijklmnopqrstuvwxyz
+
+# Инструкции:
+# 1. Перейдите на https://search.google.com/search-console
+# 2. Добавьте свойство https://flgmn.tech
+# 3. Выберите метод верификации "Файл HTML"
+# 4. Скопируйте код верификации и вставьте его ниже
