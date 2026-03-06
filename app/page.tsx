@@ -1,8 +1,5 @@
-'use client'
-
 import type { Metadata } from 'next'
-import { Suspense, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { HeroSection } from "@/components/home/hero-section"
@@ -15,6 +12,7 @@ import { FounderSection } from "@/components/home/founder-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { FinalCTASection } from "@/components/home/final-cta-section"
 import { ContactsSection } from "@/components/home/contacts-section"
+import { ScrollHandler } from "@/components/home/scroll-handler"
 
 // SEO Metadata for home page
 export const metadata: Metadata = {
@@ -34,33 +32,7 @@ export const metadata: Metadata = {
   ]
 }
 
-// Отдельный компонент, использующий useSearchParams
-function ScrollHandler() {
-  const searchParams = useSearchParams()
 
-  useEffect(() => {
-    const section = searchParams.get('section')
-    if (section) {
-      const element = document.getElementById(section)
-      if (element) {
-        // Даём время на рендер, затем скроллим с учётом высоты хедера
-        setTimeout(() => {
-          const header = document.querySelector('header')
-          const headerHeight = header ? header.offsetHeight : 0
-          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-          const offsetPosition = elementPosition - headerHeight - 10 // 10px доп. отступа
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          })
-        }, 100)
-      }
-    }
-  }, [searchParams])
-
-  return null
-}
 
 export default function HomePage() {
   return (
