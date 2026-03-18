@@ -23,7 +23,7 @@ const contactMethods = [
     icon: Mail,
     title: "Email",
     value: "hello@flgmn.tech",
-    href: "mailto:hello@flgmn.tech"
+    href: "mailto:office@apx-m.ru"
   },
   {
     icon: MapPin,
