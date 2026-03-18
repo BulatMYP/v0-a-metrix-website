@@ -120,11 +120,11 @@ export function CoursesSection() {
                       Скидка {course.discount}%
                     </span>
                   )}
-                  {course.extraOffer && (
+                  {/* {course.extraOffer && (
                     <span className="text-sm font-medium mt-1 text-primary">
                       {course.extraOffer}
                     </span>
-                  )}
+                  )} */}
                 </div>
 
                 {/* Длительность */}
