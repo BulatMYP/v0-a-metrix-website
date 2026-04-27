@@ -24,7 +24,7 @@ const courses = [
     timeline: "2 недели",
     highlighted: false,
     badge: "Прорывной старт",
-    /*extraOffer: "Первым 10 — 34 900 ₽"  */
+    extraOffer: "Первым 10 — 34 900 ₽"  
   },
   {
     name: "Профессиональный: «Запуск и масштабирование»",
