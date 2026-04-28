@@ -72,7 +72,8 @@ export default function OfferPage() {
       <p className="mb-6">8.3. Оферта действует бессрочно до момента её отзыва Исполнителем.</p>
 
       <h2 className="text-2xl font-semibold mt-6 mb-3">Реквизиты Исполнителя</h2>
-      <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto text-sm mb-6">
+     <div className="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm text-white">
+  <pre className="text-white whitespace-pre-wrap font-mono">
 {`Индивидуальный предприниматель Мухтасипов Булат Рамилевич
 ИНН: 165208249893
 Юридический адрес: РОССИЯ, Республика Татарстан, Чистопольский р-н, г. Чистополь, ул. Чернышевского, д. 101, кв. 8
@@ -83,7 +84,8 @@ export default function OfferPage() {
 Корреспондентский счёт: 30101810200000000824
 
 E-mail: hello@flgmn.tech`}
-      </pre>
+  </pre>
+</div>
 
       <div className="mt-8 text-sm text-gray-500 border-t pt-4">
         <p>Нажимая кнопку «Оплатить» на сайте, вы подтверждаете, что ознакомлены с условиями настоящей оферты и принимаете их.</p>
