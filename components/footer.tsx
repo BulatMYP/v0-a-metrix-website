@@ -1,5 +1,3 @@
-'use client'
-
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { MapPin, Phone, Clock, Mail } from "lucide-react"
@@ -18,6 +16,7 @@ const additionalLinks = [
   { href: "/cases", label: "Кейсы" },
   { href: "/career", label: "Карьера" },
   { href: "/privacy", label: "Политика конфиденциальности" },
+  { href: "/offer", label: "Публичная оферта" },   // ✅ новая ссылка
 ]
 
 export function Footer() {
