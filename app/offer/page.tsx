@@ -71,20 +71,17 @@ export default function OfferPage() {
       <p className="mb-2">8.2. Все споры стороны стараются решить путём переговоров. При недостижении согласия – спор передаётся на рассмотрение суда по месту нахождения Исполнителя (г. Казань).</p>
       <p className="mb-6">8.3. Оферта действует бессрочно до момента её отзыва Исполнителем.</p>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-3">Реквизиты Исполнителя</h2>
-     <div className="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm text-white">
-  <pre className="text-white whitespace-pre-wrap font-mono">
-{`Индивидуальный предприниматель Мухтасипов Булат Рамилевич
-ИНН: 165208249893
-Юридический адрес: РОССИЯ, Республика Татарстан, Чистопольский р-н, г. Чистополь, ул. Чернышевского, д. 101, кв. 8
-
-Расчётный счёт: 40802810929370003350
-Банк: ФИЛИАЛ "НИЖЕГОРОДСКИЙ" АО "АЛЬФА-БАНК"
-БИК: 042202824
-Корреспондентский счёт: 30101810200000000824
-
-E-mail: hello@flgmn.tech`}
-  </pre>
+      <h2 className="text-2xl font-semibold mt-8 mb-4">Реквизиты Исполнителя</h2>
+<div className="space-y-1 text-base">
+  <p><strong>Индивидуальный предприниматель</strong> Мухтасипов Булат Рамилевич</p>
+  <p><strong>ИНН:</strong> 165208249893</p>
+  <p><strong>ОГРНИП:</strong> 323169000234677</p>
+  <p><strong>Юридический адрес:</strong> Россия, Республика Татарстан, Чистопольский р-н, г. Чистополь, ул. Чернышевского, д. 101, кв. 8</p>
+  <p><strong>Расчётный счёт:</strong> 40802810929370003350</p>
+  <p><strong>Банк:</strong> ФИЛИАЛ &quot;НИЖЕГОРОДСКИЙ&quot; АО &quot;АЛЬФА-БАНК&quot;</p>
+  <p><strong>БИК:</strong> 042202824</p>
+  <p><strong>Корреспондентский счёт:</strong> 30101810200000000824</p>
+  <p><strong>Email:</strong> <a href="mailto:hello@flgmn.tech" className="text-blue-600 underline">hello@flgmn.tech</a></p>
 </div>
 
       <div className="mt-8 text-sm text-gray-500 border-t pt-4">
