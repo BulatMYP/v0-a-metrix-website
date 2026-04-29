@@ -72,7 +72,8 @@ export default function OfferPage() {
       <p className="mb-6">8.3. Оферта действует бессрочно до момента её отзыва Исполнителем.</p>
 
       <h2 className="text-2xl font-semibold mt-6 mb-3">Реквизиты Исполнителя</h2>
-      <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto text-sm mb-6">
+<div className="bg-gray-100 p-4 rounded-md overflow-x-auto text-sm mb-6 text-gray-800">
+  <pre className="whitespace-pre-wrap font-mono text-gray-800">
 {`ИНДИВИДУАЛЬНЫЙ ПРЕДПРИНИМАТЕЛЬ МУХТАСИПОВ БУЛАТ РАМИЛЕВИЧ
 Юридический адрес: 422980, РОССИЯ, РЕСП ТАТАРСТАН, ЧИСТОПОЛЬСКИЙ Р-Н,
 Г ЧИСТОПОЛЬ, УЛ ЧЕРНЫШЕВСКОГО, Д 101, КВ 8
@@ -88,12 +89,7 @@ export default function OfferPage() {
 Юридический адрес банка: 127287, г. Москва, ул. Хуторская 2-я, д. 38А, стр. 26
 
 E-mail: hello@flgmn.tech`}
-      </pre>
-
-      <div className="mt-8 text-sm text-gray-500 border-t pt-4">
-        <p>Нажимая кнопку «Оплатить» на сайте, вы подтверждаете, что ознакомлены с условиями настоящей оферты и принимаете их.</p>
-        <p className="mt-2">© ФЛАГМАН/Tech, 2026. Все права защищены.</p>
-      </div>
-    </div>
+  </pre>
+</div>
   )
 }
