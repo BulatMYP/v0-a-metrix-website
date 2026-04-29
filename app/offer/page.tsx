@@ -71,17 +71,19 @@ export default function OfferPage() {
       <p className="mb-2">8.2. Все споры стороны стараются решить путём переговоров. При недостижении согласия – спор передаётся на рассмотрение суда по месту нахождения Исполнителя (г. Казань).</p>
       <p className="mb-6">8.3. Оферта действует бессрочно до момента её отзыва Исполнителем.</p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4">Реквизиты Исполнителя</h2>
-<div className="space-y-1 text-base">
-  <p><strong>Индивидуальный предприниматель</strong> Мухтасипов Булат Рамилевич</p>
-  <p><strong>ИНН:</strong> 165208249893</p>
-  <p><strong>ОГРНИП:</strong> 323169000234677</p>
-  <p><strong>Юридический адрес:</strong> Россия, Республика Татарстан, Чистопольский р-н, г. Чистополь, ул. Чернышевского, д. 101, кв. 8</p>
-  <p><strong>Расчётный счёт:</strong> 40802810929370003350</p>
-  <p><strong>Банк:</strong> ФИЛИАЛ &quot;НИЖЕГОРОДСКИЙ&quot; АО &quot;АЛЬФА-БАНК&quot;</p>
-  <p><strong>БИК:</strong> 042202824</p>
-  <p><strong>Корреспондентский счёт:</strong> 30101810200000000824</p>
-  <p><strong>Email:</strong> <a href="mailto:hello@flgmn.tech" className="text-blue-600 underline">hello@flgmn.tech</a></p>
+      <h2 className="text-2xl font-semibold mt-6 mb-3">Реквизиты Исполнителя</h2>
+<div className="bg-gray-50 p-4 rounded-md border border-gray-200 text-sm space-y-1 font-mono">
+  <p><strong>ИП Мухтасипов Булат Рамилевич</strong></p>
+  <p>ОГРНИП: 323169000234677</p>
+  <p>ИНН: 165208249893</p>
+  <p>Юридический адрес: 422980, РОССИЯ, РЕСП ТАТАРСТАН, ЧИСТОПОЛЬСКИЙ Р-Н, Г ЧИСТОПОЛЬ, УЛ ЧЕРНЫШЕВСКОГО, Д 101, КВ 8</p>
+  <p className="mt-2">Расчётный счёт: 40802810700005383371</p>
+  <p>Банк: АО «ТБанк»</p>
+  <p>ИНН банка: 7710140679</p>
+  <p>БИК: 044525974</p>
+  <p>Корр. счёт: 30101810145250000974</p>
+  <p>Юридический адрес банка: 127287, г. Москва, ул. Хуторская 2-я, д. 38А, стр. 26</p>
+  <p className="mt-2">E-mail: <a href="mailto:hello@flgmn.tech" className="text-blue-600 underline">hello@flgmn.tech</a></p>
 </div>
 
       <div className="mt-8 text-sm text-gray-500 border-t pt-4">
