@@ -1,15 +1,18 @@
-import Link from "next/link"
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Clock, Rocket, TrendingUp, Gem, GraduationCap } from "lucide-react"
+import { initiatePayment } from "@/lib/payment"
 
 const courses = [
   {
+    id: "basic",
     name: "Базовый: «Экономика и продажи»",
     icon: Rocket,
-    price: "59 900 ₽",
-    oldPrice: "79 900 ₽",
+    priceRub: 59900,
+    oldPriceRub: 79900,
     discount: 25,
     description: "Первый поток для студентов технических вузов. Фундамент для запуска бизнеса: финансы, маркетинг, продажи.",
     includes: [
@@ -24,13 +27,13 @@ const courses = [
     timeline: "2 недели",
     highlighted: false,
     badge: "Прорывной старт",
-   /* extraOffer: "Первым 10 — 34 900 ₽"  */
   },
   {
+    id: "professional",
     name: "Профессиональный: «Запуск и масштабирование»",
     icon: TrendingUp,
-    price: "249 900 ₽",
-    oldPrice: undefined,
+    priceRub: 249900,
+    oldPriceRub: undefined,
     discount: undefined,
     description: "Для основателей с первыми продажами и командой. Систематизация процессов, упаковка бизнеса и масштабирование.",
     includes: [
@@ -45,13 +48,14 @@ const courses = [
     cta: "Масштабировать бизнес",
     timeline: "3 недели",
     highlighted: true,
-    badge: "Популярный выбор"
+    badge: "Популярный выбор",
   },
   {
+    id: "vip",
     name: "VIP: «Стратегия и инвестиции»",
     icon: Gem,
-    price: "349 900 ₽",
-    oldPrice: undefined,
+    priceRub: 349900,
+    oldPriceRub: undefined,
     discount: undefined,
     description: "Интенсивный курс для основателей, готовых к привлечению институциональных инвестиций. Индивидуальная проработка стратегии, финансовой модели и переговорных позиций с действующими инвесторами.",
     includes: [
@@ -64,11 +68,19 @@ const courses = [
     cta: "Привлечь инвестиции",
     timeline: "4 недели",
     highlighted: false,
-    badge: "VIP"
+    badge: "VIP",
   }
 ]
 
 export function CoursesSection() {
+  const handlePayment = (course: typeof courses[0]) => {
+    initiatePayment({
+      amount: course.priceRub,
+      description: `Оплата курса "${course.name}"`,
+      orderId: `${course.id}-${Date.now()}`,
+    })
+  }
+
   return (
     <section id="courses" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -88,10 +100,15 @@ export function CoursesSection() {
               key={course.name}
               className={`relative flex flex-col h-full ${course.highlighted ? 'border-primary shadow-lg' : ''}`}
             >
-              {/* Бейдж (если есть) */}
               {course.badge && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <Badge className={`${course.badge === 'Первый поток' ? 'bg-green-600' : 'bg-primary'} text-primary-foreground whitespace-nowrap`}>
+                  <Badge
+                    className={`whitespace-nowrap ${
+                      course.badge === "Прорывной старт"
+                        ? "bg-green-600 text-white"
+                        : "bg-primary text-primary-foreground"
+                    }`}
+                  >
                     {course.badge}
                   </Badge>
                 </div>
@@ -107,12 +124,15 @@ export function CoursesSection() {
 
                 <CardDescription className="min-h-16 flex items-start">{course.description}</CardDescription>
 
-                {/* Ценовой блок */}
                 <div className="pt-4 min-h-20 flex flex-col justify-start">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-3xl font-bold text-foreground">{course.price}</span>
-                    {course.oldPrice && (
-                      <span className="text-lg text-muted-foreground line-through">{course.oldPrice}</span>
+                    <span className="text-3xl font-bold text-foreground">
+                      {course.priceRub.toLocaleString('ru-RU')} ₽
+                    </span>
+                    {course.oldPriceRub && (
+                      <span className="text-lg text-muted-foreground line-through">
+                        {course.oldPriceRub.toLocaleString('ru-RU')} ₽
+                      </span>
                     )}
                   </div>
                   {course.discount && (
@@ -120,20 +140,13 @@ export function CoursesSection() {
                       Скидка {course.discount}%
                     </span>
                   )}
-                  {/* {course.extraOffer && (
-                    <span className="text-sm font-medium mt-1 text-primary">
-                      {course.extraOffer}
-                    </span>
-                  )} */}
                 </div>
 
-                {/* Длительность */}
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Clock className="h-4 w-4" />
                   <span>{course.timeline}</span>
                 </div>
 
-                {/* Специально для базового курса: иконка студента */}
                 {course.name.includes("Базовый") && (
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                     <GraduationCap className="h-4 w-4" />
@@ -157,9 +170,9 @@ export function CoursesSection() {
                 <Button
                   className="w-full"
                   variant={course.highlighted ? "default" : "outline"}
-                  asChild
+                  onClick={() => handlePayment(course)}
                 >
-                  <Link href="/contact">{course.cta}</Link>
+                  {course.cta}
                 </Button>
               </CardFooter>
             </Card>
@@ -170,6 +183,6 @@ export function CoursesSection() {
           После курсов вы сможете продолжить с нами работу по упаковке проекта для инвесторов.
         </p>
       </div>
-    </section>
+    </Card>
   )
 }
