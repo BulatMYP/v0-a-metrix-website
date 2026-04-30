@@ -1,3 +1,5 @@
+// lib/payment.ts
+
 export async function initiatePayment({
   amount,
   description,
@@ -7,7 +9,7 @@ export async function initiatePayment({
   description: string;
   orderId: string;
 }) {
-  const returnUrl = `${window.location.origin}/payment/success`;
+  const returnUrl = process.env.NEXT_PUBLIC_YOOKASSA_RETURN_URL || `${window.location.origin}/payment/success`;
   try {
     const response = await fetch('/api/create-payment', {
       method: 'POST',
@@ -24,10 +26,9 @@ export async function initiatePayment({
       throw new Error(error.error || 'Payment creation failed');
     }
     const data = await response.json();
-    // Перенаправляем пользователя на платёжную страницу ЮKassa
     window.location.href = data.confirmationUrl;
   } catch (error) {
     console.error('Payment initiation error:', error);
-    alert('Не удалось начать оплату.. Попробуйте еще раз!');
+    alert('Не удалось начать оплату. Попробуйте позже.');
   }
 }
