@@ -69,10 +69,10 @@ export async function createPayment({
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    console.error('YooKassa payment creation error:', errorText);
-    throw new Error('Payment creation failed');
-  }
+  const errorText = await response.text();
+  console.error('YooKassa payment creation error:', errorText);
+  throw new Error(`YooKassa error: ${response.status} ${errorText}`);
+}
 
   return response.json();
 }
