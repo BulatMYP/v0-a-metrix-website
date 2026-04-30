@@ -1,4 +1,3 @@
-typescript
 import { NextRequest, NextResponse } from 'next/server';
 import { createPayment } from '@/lib/yookassa';
 
@@ -9,10 +8,12 @@ export async function POST(request: NextRequest) {
 
     if (!amount || !description || !orderId || !returnUrl) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields: amount, description, orderId, returnUrl' },
         { status: 400 }
       );
     }
+
+    console.log('Creating payment with:', { amount, description, orderId, returnUrl });
 
     const payment = await createPayment({
       amount,
@@ -27,7 +28,6 @@ export async function POST(request: NextRequest) {
     });
   } catch (error: any) {
     console.error('Create payment error:', error);
-    // Возвращаем детали ошибки (временно, для отладки)
     return NextResponse.json(
       { error: error.message || 'Failed to create payment' },
       { status: 500 }
