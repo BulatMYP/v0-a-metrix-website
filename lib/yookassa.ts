@@ -1,22 +1,31 @@
-// Базовый URL API ЮKassa
-const YOOKASSA_API_URL = 'https://api.yookassa.ru/v3';
-// Ваши ключи из .env.local
-const SHOP_ID = process.env.YOOKASSA_SHOP_ID;
-const SECRET_KEY = process.env.YOOKASSA_SECRET_KEY;
+// lib/yookassa.ts
 
-if (!SHOP_ID || !SECRET_KEY) {
+// Чтение переменных окружения
+export const shopId = process.env.YOOKASSA_SHOP_ID;
+export const secretKey = process.env.YOOKASSA_SECRET_KEY;
+
+if (!shopId || !secretKey) {
   throw new Error('Missing YooKassa credentials in .env.local');
 }
 
-// Авторизация: BasicAuth с shopId и secretKey
-const auth = Buffer.from(`${SHOP_ID}:${SECRET_KEY}`).toString('base64');
+// Базовый URL API ЮKassa
+const YOOKASSA_API_URL = 'https://api.yookassa.ru/v3';
 
-// Утилита для генерации idempotence key (уникальный ключ для каждого запроса)
+// Авторизация: BasicAuth
+export function getAuthHeaders(): HeadersInit {
+  const auth = Buffer.from(`${shopId}:${secretKey}`).toString('base64');
+  return {
+    'Authorization': `Basic ${auth}`,
+    'Content-Type': 'application/json',
+  };
+}
+
+// Генерация idempotence key
 export function generateIdempotenceKey(): string {
   return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 }
 
-// Функция создания платежа
+// Создание платежа
 export async function createPayment({
   amount,
   currency = 'RUB',
@@ -50,32 +59,42 @@ export async function createPayment({
     },
   };
 
-  try {
-    const response = await axios.post(`${YOOKASSA_API_URL}/payments`, payload, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Idempotence-Key': idempotenceKey,
-        'Authorization': `Basic ${auth}`,
-      },
-    });
-    return response.data;
-  } catch (error: any) {
-    console.error('YooKassa payment creation error:', error.response?.data || error.message);
+  const response = await fetch(`${YOOKASSA_API_URL}/payments`, {
+    method: 'POST',
+    headers: {
+      ...getAuthHeaders(),
+      'Idempotence-Key': idempotenceKey,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('YooKassa payment creation error:', errorText);
     throw new Error('Payment creation failed');
   }
+
+  return response.json();
 }
 
-// Функция получения информации о платеже
+// Получение информации о платеже
 export async function getPayment(paymentId: string) {
-  try {
-    const response = await axios.get(`${YOOKASSA_API_URL}/payments/${paymentId}`, {
-      headers: {
-        'Authorization': `Basic ${auth}`,
-      },
-    });
-    return response.data;
-  } catch (error: any) {
-    console.error('YooKassa get payment error:', error.response?.data || error.message);
+  const response = await fetch(`${YOOKASSA_API_URL}/payments/${paymentId}`, {
+    headers: getAuthHeaders(),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('YooKassa get payment error:', errorText);
     throw new Error('Failed to fetch payment');
   }
+
+  return response.json();
+}
+
+// Верификация уведомления от ЮKassa (для webhook)
+export async function verifyWebhookNotification(requestBody: any, requestHeaders: Headers): Promise<boolean> {
+  // Здесь позже добавим проверку подписи (если используется)
+  // Пока просто возвращаем true
+  return true;
 }
