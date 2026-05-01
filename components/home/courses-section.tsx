@@ -74,12 +74,18 @@ const courses = [
 
 export function CoursesSection() {
   const handlePayment = (course: typeof courses[0]) => {
-    initiatePayment({
-      amount: course.priceRub,
-      description: `Оплата курса "${course.name}"`,
-      orderId: `${course.id}-${Date.now()}`,
-    })
+  const email = window.prompt('Введите ваш email для отправки чека:');
+  if (!email || !email.includes('@')) {
+    alert('Пожалуйста, введите корректный email');
+    return;
   }
+  initiatePayment({
+    amount: course.priceRub,
+    description: `Оплата курса "${course.name}"`,
+    orderId: `${course.id}-${Date.now()}`,
+    email: email,     // добавили email
+  });
+}
 
   return (
     <section id="courses" className="py-20 md:py-28">
