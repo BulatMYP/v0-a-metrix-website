@@ -4,10 +4,12 @@ export async function initiatePayment({
   amount,
   description,
   orderId,
+  email,
 }: {
   amount: number;
   description: string;
   orderId: string;
+  email: string;
 }) {
   const returnUrl = process.env.NEXT_PUBLIC_YOOKASSA_RETURN_URL || `${window.location.origin}/payment/success`;
   try {
@@ -19,6 +21,7 @@ export async function initiatePayment({
         description,
         orderId,
         returnUrl,
+        email,
       }),
     });
     if (!response.ok) {
