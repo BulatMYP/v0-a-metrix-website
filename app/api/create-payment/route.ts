@@ -1,42 +1,47 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createPayment } from '@/lib/yookassa';
 
-// Временный GET-метод для проверки доступности API
-export async function GET() {
-  return NextResponse.json({ message: 'API is alive' });
-}
-
-// Обработка preflight-запросов (CORS)
-export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
-}
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { amount, description, orderId, returnUrl } = body;
+    const { amount, description, orderId, returnUrl, email } = body;
 
-    if (!amount || !description || !orderId || !returnUrl) {
+    // Проверяем обязательные поля
+    if (!amount || !description || !orderId || ! returnUrl) {
       return NextResponse.json(
         { error: 'Missing required fields: amount, description, orderId, returnUrl' },
         { status: 400 }
       );
     }
 
-    console.log('Creating payment with:', { amount, description, orderId, returnUrl });
+    if (!email || !email.includes('@')) {
+      return NextResponse.json(
+        { error: 'Valid email is required for receipt' },
+        { status: 400 }
+      );
+    }
+
+    // Формируем чек (фискальный) — минимальные данные для ЮKassa
+    const receipt = {
+      customer: { email },
+      items: [
+        {
+          description: description,
+          quantity: '1.00',
+          amount: { value: amount.toFixed(2), currency: 'RUB' },
+          vat_code: '1', // НДС по ставке 20% (можно изменить при необходимости)
+          payment_mode: 'full_payment',
+          payment_subject: 'service',
+        },
+      ],
+    };
 
     const payment = await createPayment({
       amount,
       description,
       returnUrl,
       orderId,
+      receipt, // передаём чек
     });
 
     return NextResponse.json({
