@@ -6,42 +6,19 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { amount, description, orderId, returnUrl, email } = body;
 
-    // Проверяем обязательные поля
-    if (!amount || !description || !orderId || ! returnUrl) {
+    if (!amount || !description || ! orderId || !returnUrl || !email) {
       return NextResponse.json(
-        { error: 'Missing required fields: amount, description, orderId, returnUrl' },
+        { error: 'Missing required fields: amount, description, orderId, returnUrl, email' },
         { status: 400 }
       );
     }
-
-    if (!email || !email.includes('@')) {
-      return NextResponse.json(
-        { error: 'Valid email is required for receipt' },
-        { status: 400 }
-      );
-    }
-
-    // Формируем чек (фискальный) — минимальные данные для ЮKassa
-    const receipt = {
-      customer: { email },
-      items: [
-        {
-          description: description,
-          quantity: '1.00',
-          amount: { value: amount.toFixed(2), currency: 'RUB' },
-          vat_code: '1', // НДС по ставке 20% (можно изменить при необходимости)
-          payment_mode: 'full_payment',
-          payment_subject: 'service',
-        },
-      ],
-    };
 
     const payment = await createPayment({
       amount,
       description,
       returnUrl,
       orderId,
-      receipt, // передаём чек
+      email,
     });
 
     return NextResponse.json({
