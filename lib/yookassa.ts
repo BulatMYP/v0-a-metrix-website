@@ -2,7 +2,7 @@
 
 // Чтение переменных окружения
 export const shopId = process.env.YOOKASSA_SHOP_ID;
-export const secretKey = process.env.YOOKASSA_SECRET_KEY;
+export const secretKey = process.env.YOKASSA_SECRET_KEY;
 
 if (!shopId || !secretKey) {
   throw new Error('Missing YooKassa credentials in .env.local');
@@ -25,19 +25,21 @@ export function generateIdempotenceKey(): string {
   return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 }
 
-// Создание платежа
+// Создание платежа с чеком (email покупателя обязателен)
 export async function createPayment({
   amount,
   currency = 'RUB',
   description,
   returnUrl,
   orderId,
+  email,
 }: {
   amount: number;
   currency?: string;
   description: string;
   returnUrl: string;
   orderId: string;
+  email: string;
 }) {
   const idempotenceKey = generateIdempotenceKey();
 
@@ -57,6 +59,22 @@ export async function createPayment({
     metadata: {
       orderId,
     },
+    receipt: {
+      customer: {
+        email: email,
+      },
+      items: [
+        {
+          description: description,
+          quantity: '1.00',
+          amount: {
+            value: amount.toFixed(2),
+            currency,
+          },
+          vat_code: '1', // ставка НДС: 1 = 20%
+        },
+      ],
+    },
   };
 
   const response = await fetch(`${YOOKASSA_API_URL}/payments`, {
@@ -69,10 +87,10 @@ export async function createPayment({
   });
 
   if (!response.ok) {
-  const errorText = await response.text();
-  console.error('YooKassa payment creation error:', errorText);
-  throw new Error(`YooKassa error: ${response.status} ${errorText}`);
-}
+    const errorText = await response.text();
+    console.error('YooKassa payment creation error:', errorText);
+    throw new Error(`YooKassa error: ${response.status} ${errorText}`);
+  }
 
   return response.json();
 }
