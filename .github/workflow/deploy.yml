@@ -22,9 +22,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          # cache: 'npm'   # временно отключено
       - run: npm install
       - run: npm run build
+      - name: Ensure out directory exists
+        run: mkdir -p out
+      - name: Create CNAME file for custom domain
+        run: echo "flgmn.tech" > out/CNAME
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
