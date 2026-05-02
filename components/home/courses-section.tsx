@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Clock, Rocket, TrendingUp, Gem, GraduationCap } from "lucide-react"
-import { initiatePayment } from "@/lib/payment"
+import Link from "next/link"
 
 const courses = [
   {
@@ -73,20 +73,6 @@ const courses = [
 ]
 
 export function CoursesSection() {
-  const handlePayment = (course: typeof courses[0]) => {
-  const email = window.prompt('Введите ваш email для отправки чека:');
-  if (!email || !email.includes('@')) {
-    alert('Пожалуйста, введите корректный email');
-    return;
-  }
-  initiatePayment({
-    amount: course.priceRub,
-    description: `Оплата курса "${course.name}"`,
-    orderId: `${course.id}-${Date.now()}`,
-    email: email,     // добавили email
-  });
-}
-
   return (
     <section id="courses" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -176,9 +162,9 @@ export function CoursesSection() {
                 <Button
                   className="w-full"
                   variant={course.highlighted ? "default" : "outline"}
-                  onClick={() => handlePayment(course)}
+                  asChild
                 >
-                  {course.cta}
+                  <Link href="/contact">{course.cta}</Link>
                 </Button>
               </CardFooter>
             </Card>
