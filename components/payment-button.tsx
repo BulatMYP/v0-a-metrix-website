@@ -17,6 +17,37 @@ declare global {
   }
 }
 
+// Функция для динамической загрузки скрипта YooKassa
+function loadYooKassaWidgetScript(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined') {
+      return reject(new Error('Not in browser environment'));
+    }
+
+    // Если виджет уже загружен, сразу резолвим
+    if ((window as any).YooKassaCheckoutWidget) {
+      resolve();
+      return;
+    }
+
+    // Создаём и добавляем скрипт
+    const script = document.createElement('script');
+    script.src = 'https://yookassa.ru/checkout-widget/v1/checkout-widget.js';
+    script.async = true;
+
+    script.onload = () => {
+      // Небольшая задержка на случай, если глобальная переменная ещё не установлена
+      setTimeout(() => resolve(), 100);
+    };
+
+    script.onerror = () => {
+      reject(new Error('Failed to load YooKassa widget script'));
+    };
+
+    document.head.appendChild(script);
+  });
+}
+
 export function PaymentButton({
   amount,
   description,
@@ -53,20 +84,22 @@ export function PaymentButton({
 
       console.log('[PaymentButton] Payment created:', paymentId);
 
-      // Initialize YooKassa Checkout Widget
-      if (window.YooKassaCheckoutWidget) {
-        checkoutWidgetRef.current = new window.YooKassaCheckoutWidget({
-          confirmation_token: confirmation_token,
-          return_url: `${window.location.origin}/payment/success?paymentId=${paymentId}`,
-        });
+      // Динамически загружаем скрипт виджета перед инициализацией
+      await loadYooKassaWidgetScript();
 
-        checkoutWidgetRef.current.render('checkout');
-        setIsLoading(false);
-      } else {
-        console.error('[PaymentButton] YooKassaCheckoutWidget not found');
-        alert('Виджет платежей не загружен. Попробуйте позже.');
-        setIsLoading(false);
-      }
+      // Инициализируем виджет YooKassa после загрузки скрипта
+      const widget = new (window as any).YooKassaCheckoutWidget({
+        confirmation_token: confirmation_token,
+        return_url: `${window.location.origin}/payment/success?paymentId=${paymentId}`,
+        error_callback: (error: any) => {
+          console.error('[PaymentButton] Widget error:', error);
+          alert('Ошибка при выполнении платежа. Попробуйте позже.');
+        },
+      });
+
+      checkoutWidgetRef.current = widget;
+      widget.render('checkout');
+      setIsLoading(false);
     } catch (error) {
       console.error('[PaymentButton] Error:', error);
       alert('Произошла ошибка. Попробуйте позже.');
