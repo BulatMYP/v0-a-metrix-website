@@ -39,6 +39,24 @@ export async function POST(request: NextRequest) {
       },
       capture: true,
       description: description,
+      receipt: {
+        customer: {
+          email: 'test@example.com',
+        },
+        items: [
+          {
+            description: description,
+            quantity: '1.00',
+            amount: {
+              value: Number(amount).toFixed(2),
+              currency: 'RUB',
+            },
+            vat_code: 1,
+            payment_mode: 'full_payment',
+            payment_subject: 'service',
+          },
+        ],
+      },
     };
 
     console.log('[YooKassa] Creating payment with data:', paymentData);
