@@ -6,6 +6,11 @@ import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Clock, Rocket, TrendingUp, Gem, GraduationCap } from "lucide-react"
 import Link from "next/link"
 
+declare global {
+  interface Window {
+    PaymentIntegration?: any;
+  }
+}
 const courses = [
   {
     id: "basic",
