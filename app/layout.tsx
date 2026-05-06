@@ -2,7 +2,6 @@ import React from "react"
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import Script from 'next/script'
 import './globals.css'
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
   referrer: 'origin-when-cross-origin',
   metadataBase: new URL('https://flgmn.tech'),
   keywords: [
-    // (ваши ключевые слова – оставьте как есть)
+    // (ваши ключевые слова остаются без изменений)
   ],
   authors: [{ name: 'Флагман/Tech' }],
   creator: 'Флагман/Tech',
@@ -81,7 +80,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
-        {/* остальные meta-теги – оставьте без изменений */}
         <meta name="theme-color" content="#f5f2ed" />
         <meta name="msapplication-TileColor" content="#f5f2ed" />
         <meta name="yandex-verification" content="YANDEX_VERIFICATION_CODE" />
@@ -93,32 +91,6 @@ export default function RootLayout({
       <body className={`${inter.className} font-sans antialiased`}>
         {children}
         <Analytics />
-
-        {/* Скрипт интеграции Т-Банка */}
-        <Script
-          src="https://integrationjs.t-static.ru/integration.js"
-          strategy="afterInteractive"
-          onLoad={() => {
-            if (typeof window !== 'undefined') {
-              // Используем приведение типа, чтобы избежать ошибки TypeScript
-              const win = window as any;
-              if (win.PaymentIntegration) {
-                win.PaymentIntegration.init({
-                  terminalKey: process.env.NEXT_PUBLIC_TINKOFF_TERMINAL_KEY,
-                  product: 'eacq',
-                  features: {
-                    payment: {},
-                    iframe: {}
-                  }
-                }).then(() => {
-                  console.log('Tinkoff payment integration initialized');
-                }).catch((err: any) => {
-                  console.error('Tinkoff init error:', err);
-                });
-              }
-            }
-          }}
-        />
       </body>
     </html>
   )
