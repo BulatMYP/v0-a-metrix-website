@@ -1,16 +1,9 @@
-"use client";
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Clock, Rocket, TrendingUp, Gem, GraduationCap } from "lucide-react"
 import Link from "next/link"
 
-declare global {
-  interface Window {
-    PaymentIntegration?: any;
-  }
-}
 const courses = [
   {
     id: "basic",
@@ -38,8 +31,6 @@ const courses = [
     name: "Профессиональный: «Запуск и масштабирование»",
     icon: TrendingUp,
     priceRub: 249900,
-    oldPriceRub: undefined,
-    discount: undefined,
     description: "Для основателей с первыми продажами и командой. Систематизация процессов, упаковка бизнеса и масштабирование.",
     includes: [
       "Углублённое финансовое моделирование на 3–5 лет",
@@ -51,7 +42,7 @@ const courses = [
       "Оптимизация бизнес-процессов"
     ],
     cta: "Масштабировать бизнес",
-    timeline: "3 недели",
+    timeline: "3 Wochen",
     highlighted: true,
     badge: "Популярный выбор",
   },
@@ -60,8 +51,6 @@ const courses = [
     name: "VIP: «Стратегия и инвестиции»",
     icon: Gem,
     priceRub: 349900,
-    oldPriceRub: undefined,
-    discount: undefined,
     description: "Интенсивный курс для основателей, готовых к привлечению институциональных инвестиций. Индивидуальная проработка стратегии, финансовой модели и переговорных позиций с действующими инвесторами.",
     includes: [
       "Инвестиционная упаковка: pitch deck, меморандум, финансовая модель",
@@ -71,7 +60,7 @@ const courses = [
       "Менторские сессии с инвесторами (4–6 встреч)"
     ],
     cta: "Привлечь инвестиции",
-    timeline: "4 недели",
+    timeline: "4 Wochen",
     highlighted: false,
     badge: "VIP",
   }
@@ -94,7 +83,7 @@ export function CoursesSection() {
         <div className="grid gap-6 lg:grid-cols-3">
           {courses.map((course) => (
             <Card
-              key={course.name}
+              key={course.id}
               className={`relative flex flex-col h-full ${course.highlighted ? 'border-primary shadow-lg' : ''}`}
             >
               {course.badge && (
@@ -144,7 +133,7 @@ export function CoursesSection() {
                   <span>{course.timeline}</span>
                 </div>
 
-                {course.name.includes("Базовый") && (
+                {course.id === "basic" && (
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                     <GraduationCap className="h-4 w-4" />
                     <span>Студенческий тариф</span>
