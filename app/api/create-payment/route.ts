@@ -35,7 +35,8 @@ export async function POST(request: NextRequest) {
         currency: 'RUB',
       },
       confirmation: {
-        type: 'embedded',
+        type: 'redirect',
+        return_url: 'https://v0-a-metrix-website-1kmq.vercel.app/payment/result',
       },
       capture: true,
       description: description,
@@ -86,7 +87,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       id: responseData.id,
-      confirmation_token: responseData.confirmation.token,
+      confirmation_url: responseData.confirmation.confirmation_url,
     });
   } catch (error) {
     console.error('[YooKassa] Server error:', error);
