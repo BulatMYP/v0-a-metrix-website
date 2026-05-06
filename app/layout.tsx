@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   referrer: 'origin-when-cross-origin',
   metadataBase: new URL('https://flgmn.tech'),
   keywords: [
-    // ... (ваши ключевые слова остаются без изменений)
+    // (ваши ключевые слова – оставьте как есть)
   ],
   authors: [{ name: 'Флагман/Tech' }],
   creator: 'Флагман/Tech',
@@ -70,7 +70,7 @@ export default function RootLayout({
   const schemaData = {
     "@context": "https://schema.org",
     "@graph": [
-      // ... (ваша schema разметка остаётся без изменений)
+      // ваша schema разметка (оставьте как есть)
     ]
   };
 
@@ -81,23 +81,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
-        {/* Поисковые системы и индексация */}
+        {/* остальные meta-теги – оставьте без изменений */}
         <meta name="theme-color" content="#f5f2ed" />
         <meta name="msapplication-TileColor" content="#f5f2ed" />
         <meta name="yandex-verification" content="YANDEX_VERIFICATION_CODE" />
-        <meta name="yandex-tableau-widget" content="YANDEX_TABLEAU_WIDGET_CODE" />
         <meta name="google-site-verification" content="GOOGLE_VERIFICATION_CODE" />
-        <meta name="msvalidate.01" content="BING_VERIFICATION_CODE" />
-        <meta name="mailru-verification" content="MAIL_VERIFICATION_CODE" />
         <meta property="og:image" content="https://flgmn.tech/logo-header.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://flgmn.tech/logo-header.png" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="author" content="Флагман/Tech" />
-        <link rel="canonical" href="https://flgmn.tech" />
       </head>
       <body className={`${inter.className} font-sans antialiased`}>
         {children}
@@ -108,20 +99,23 @@ export default function RootLayout({
           src="https://integrationjs.t-static.ru/integration.js"
           strategy="afterInteractive"
           onLoad={() => {
-            // Инициализация после загрузки скрипта
-            if (typeof window !== 'undefined' && window.PaymentIntegration) {
-              window.PaymentIntegration.init({
-                terminalKey: process.env.NEXT_PUBLIC_TINKOFF_TERMINAL_KEY,
-                product: 'eacq',
-                features: {
-                  payment: {},
-                  iframe: {}
-                }
-              }).then(() => {
-                console.log('Tinkoff payment integration initialized');
-              }).catch((err: any) => {
-                console.error('Tinkoff init error:', err);
-              });
+            if (typeof window !== 'undefined') {
+              // Используем приведение типа, чтобы избежать ошибки TypeScript
+              const win = window as any;
+              if (win.PaymentIntegration) {
+                win.PaymentIntegration.init({
+                  terminalKey: process.env.NEXT_PUBLIC_TINKOFF_TERMINAL_KEY,
+                  product: 'eacq',
+                  features: {
+                    payment: {},
+                    iframe: {}
+                  }
+                }).then(() => {
+                  console.log('Tinkoff payment integration initialized');
+                }).catch((err: any) => {
+                  console.error('Tinkoff init error:', err);
+                });
+              }
             }
           }}
         />
