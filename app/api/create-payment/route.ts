@@ -25,10 +25,13 @@ export async function POST(request: NextRequest) {
     // Prepare Basic Auth header
     const credentials = Buffer.from(`${shopId}:${secretKey}`).toString('base64');
 
+    // Prepare Idempotence-Key for request deduplication
+    const idempotenceKey = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+
     // Prepare payment data
     const paymentData = {
       amount: {
-        value: (amount / 100).toFixed(2), // Convert to rubles with 2 decimal places
+        value: String(amount),
         currency: 'RUB',
       },
       payment_method_data: {
@@ -49,7 +52,7 @@ export async function POST(request: NextRequest) {
       headers: {
         'Authorization': `Basic ${credentials}`,
         'Content-Type': 'application/json',
-        'Idempotence-Key': crypto.getRandomValues(new Uint8Array(16)).toString(),
+        'Idempotence-Key': idempotenceKey,
       },
       body: JSON.stringify(paymentData),
     });
