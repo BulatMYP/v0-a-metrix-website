@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
       },
       confirmation: {
         type: 'redirect',
-        return_url: 'https://v0-a-metrix-website-1kmq.vercel.app/payment/result',
+        return_url: 'https://v0-a-metrix-website-1kmq.vercel.app/payment/result?status=success',
       },
       capture: true,
       description: description,

@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { AnchorScrollHandler } from '@/components/anchor-scroll-handler'
 import './globals.css'
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
@@ -89,6 +90,7 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
       </head>
       <body className={`${inter.className} font-sans antialiased`}>
+        <AnchorScrollHandler />
         {children}
         <Analytics />
       </body>

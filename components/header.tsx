@@ -8,12 +8,12 @@ import { CustomLogo } from "@/components/custom-logo"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { href: "/?section=courses", label: "Курсы", anchor: "#courses" },
-  { href: "/?section=services", label: "Услуги", anchor: "#services" },
-  { href: "/?section=for-whom", label: "Для кого", anchor: "#for-whom" },
-  { href: "/?section=testimonials", label: "Отзывы", anchor: "#testimonials" },
-  { href: "/?section=about", label: "О компании", anchor: "#about" },
-  { href: "/?section=contacts", label: "Контакты", anchor: "#contacts" },
+  { href: "#courses", label: "Курсы" },
+  { href: "#services", label: "Услуги" },
+  { href: "#for-whom", label: "Для кого" },
+  { href: "#testimonials", label: "Отзывы" },
+  { href: "#about", label: "О компании" },
+  { href: "#contacts", label: "Контакты" },
 ]
 
 export function Header() {
@@ -22,17 +22,19 @@ export function Header() {
 
   const handleNavClick = (link: typeof navLinks[0]) => {
     if (pathname === '/') {
-      // On homepage, just use the anchor
-      window.location.hash = link.anchor || link.href
-    } else if (link.anchor) {
-      // On other pages, navigate to home with section param
-      window.location.href = `/?section=${link.anchor.substring(1)}`
+      // On homepage, use smooth scroll to anchor
+      const element = document.querySelector(link.href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        // Update hash without page reload
+        window.history.pushState({}, '', link.href);
+      }
     } else {
-      // Regular navigation for non-anchor links
-      window.location.href = link.href
+      // On other pages, navigate to home with anchor
+      window.location.href = `/${link.href}`;
     }
-    setMobileMenuOpen(false)
-  }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -52,8 +54,20 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button asChild>
-            <Link href="#audit">Бесплатный аудит</Link>
+          <Button
+            onClick={() => {
+              if (pathname === '/') {
+                const element = document.querySelector('#audit');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                  window.history.pushState({}, '', '#audit');
+                }
+              } else {
+                window.location.href = '/#audit';
+              }
+            }}
+          >
+            Бесплатный аудит
           </Button>
         </div>
 
@@ -79,10 +93,22 @@ export function Header() {
                 {link.label}
               </button>
             ))}
-            <Button asChild className="mt-2 w-full">
-              <Link href="#audit" onClick={() => setMobileMenuOpen(false)}>
-                Бесплатный аудит
-              </Link>
+            <Button
+              className="mt-2 w-full"
+              onClick={() => {
+                if (pathname === '/') {
+                  const element = document.querySelector('#audit');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState({}, '', '#audit');
+                  }
+                } else {
+                  window.location.href = '/#audit';
+                }
+                setMobileMenuOpen(false);
+              }}
+            >
+              Бесплатный аудит
             </Button>
           </nav>
         </div>
