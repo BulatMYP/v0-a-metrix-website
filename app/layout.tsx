@@ -87,8 +87,6 @@ export default function RootLayout({
         <meta property="og:image" content="https://flgmn.tech/logo-header.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        {/* YooKassa widget script - загружается статически для надёжности и динамически в компоненте */}
-        <script src="https://yookassa.ru/checkout-widget/v1/checkout-widget.js" async></script>
       </head>
       <body className={`${inter.className} font-sans antialiased`}>
         {children}
