@@ -153,7 +153,7 @@ export function CoursesSection() {
 
               <CardFooter>
                 <PaymentButton
-                  amount={course.priceRub * 100}
+                  amount={course.priceRub}
                   description={course.name}
                   buttonText={course.cta}
                   variant={course.highlighted ? "default" : "outline"}

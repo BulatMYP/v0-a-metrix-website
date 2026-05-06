@@ -31,17 +31,14 @@ export async function POST(request: NextRequest) {
     // Prepare payment data
     const paymentData = {
       amount: {
-        value: String(amount),
+        value: Number(amount).toFixed(2),
         currency: 'RUB',
-      },
-      payment_method_data: {
-        type: 'bank_card',
       },
       confirmation: {
         type: 'embedded',
       },
-      description: description,
       capture: true,
+      description: description,
     };
 
     console.log('[YooKassa] Creating payment with data:', paymentData);
