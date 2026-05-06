@@ -1,8 +1,7 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Clock, Rocket, TrendingUp, Gem, GraduationCap } from "lucide-react"
-import Link from "next/link"
+import { PaymentButton } from "@/components/payment-button"
 
 const courses = [
   {
@@ -153,13 +152,12 @@ export function CoursesSection() {
               </CardContent>
 
               <CardFooter>
-                <Button
-                  className="w-full"
+                <PaymentButton
+                  amount={course.priceRub * 100}
+                  description={course.name}
+                  buttonText={course.cta}
                   variant={course.highlighted ? "default" : "outline"}
-                  asChild
-                >
-                  <Link href="/contact">{course.cta}</Link>
-                </Button>
+                />
               </CardFooter>
             </Card>
           ))}

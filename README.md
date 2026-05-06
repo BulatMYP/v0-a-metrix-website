@@ -14,6 +14,10 @@ Any changes you make to your deployed app will be automatically pushed to this r
 
 Your project is live at:
 
+- **Production (Custom Domain)**: https://flgmn.tech
+- **Vercel Deployment**: https://v0-a-metrix-website.vercel.app
+- **Vercel Dashboard**: https://vercel.com/muhtasip-1444s-projects/v0-a-metrix-website
+
 
 
 ## Build your app
