@@ -8,7 +8,7 @@ const courses = [
     id: "basic",
     name: "Базовый: «Экономика и продажи»",
     icon: Rocket,
-    priceRub: 11,
+    priceRub: 59900,
     oldPriceRub: 79900,
     discount: 25,
     description: "Первый поток для студентов технических вузов. Фундамент для запуска бизнеса: финансы, маркетинг, продажи.",
@@ -41,7 +41,7 @@ const courses = [
       "Оптимизация бизнес-процессов"
     ],
     cta: "Инвестировать в рост",
-    timeline: "3 Wochen",
+    timeline: "3 недели",
     highlighted: true,
     badge: "Популярный выбор",
   },
@@ -59,7 +59,7 @@ const courses = [
       "Менторские сессии с инвесторами (4–6 встреч)"
     ],
     cta: "Купить доступ",
-    timeline: "4 Wochen",
+    timeline: "4 недели",
     highlighted: false,
     badge: "VIP",
   }
@@ -67,106 +67,111 @@ const courses = [
 
 export function CoursesSection() {
   return (
-    <section id="courses" className="py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 border-primary text-primary">B2C</Badge>
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
-            Образовательные программы для вашего бизнеса
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            От первых шагов до привлечения инвестиций — выберите свой уровень.
-          </p>
-        </div>
+    <>
+      {/* Якорный элемент для корректной прокрутки с учётом фиксированного хедера */}
+      <div id="courses-anchor" style={{ position: 'relative', top: '-100px' }}></div>
+      
+      <section id="courses" className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
+          <div className="text-center mb-16">
+            <Badge variant="outline" className="mb-4 border-primary text-primary">B2C</Badge>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
+              Образовательные программы для вашего бизнеса
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              От первых шагов до привлечения инвестиций — выберите свой уровень.
+            </p>
+          </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {courses.map((course) => (
-            <Card
-              key={course.id}
-              className={`relative flex flex-col h-full ${course.highlighted ? 'border-primary shadow-lg' : ''}`}
-            >
-              {course.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <Badge
-                    className={`whitespace-nowrap ${
-                      course.badge === "Прорывной старт"
-                        ? "bg-green-600 text-white"
-                        : "bg-primary text-primary-foreground"
-                    }`}
-                  >
-                    {course.badge}
-                  </Badge>
-                </div>
-              )}
-
-              <CardHeader>
-                <div className="flex items-start gap-3 mb-2">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                    <course.icon className="h-5 w-5 text-primary" />
+          <div className="grid gap-6 lg:grid-cols-3">
+            {courses.map((course) => (
+              <Card
+                key={course.id}
+                className={`relative flex flex-col h-full ${course.highlighted ? 'border-primary shadow-lg' : ''}`}
+              >
+                {course.badge && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                    <Badge
+                      className={`whitespace-nowrap ${
+                        course.badge === "Прорывной старт"
+                          ? "bg-green-600 text-white"
+                          : "bg-primary text-primary-foreground"
+                      }`}
+                    >
+                      {course.badge}
+                    </Badge>
                   </div>
-                  <CardTitle className="text-lg flex-1">{course.name}</CardTitle>
-                </div>
+                )}
 
-                <CardDescription className="min-h-16 flex items-start">{course.description}</CardDescription>
+                <CardHeader>
+                  <div className="flex items-start gap-3 mb-2">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <course.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <CardTitle className="text-lg flex-1">{course.name}</CardTitle>
+                  </div>
 
-                <div className="pt-4 min-h-20 flex flex-col justify-start">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-3xl font-bold text-foreground">
-                      {course.priceRub.toLocaleString('ru-RU')} ₽
-                    </span>
-                    {course.oldPriceRub && (
-                      <span className="text-lg text-muted-foreground line-through">
-                        {course.oldPriceRub.toLocaleString('ru-RU')} ₽
+                  <CardDescription className="min-h-16 flex items-start">{course.description}</CardDescription>
+
+                  <div className="pt-4 min-h-20 flex flex-col justify-start">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-3xl font-bold text-foreground">
+                        {course.priceRub.toLocaleString('ru-RU')} ₽
+                      </span>
+                      {course.oldPriceRub && (
+                        <span className="text-lg text-muted-foreground line-through">
+                          {course.oldPriceRub.toLocaleString('ru-RU')} ₽
+                        </span>
+                      )}
+                    </div>
+                    {course.discount && (
+                      <span className="text-sm font-semibold mt-1 text-destructive">
+                        Скидка {course.discount}%
                       </span>
                     )}
                   </div>
-                  {course.discount && (
-                    <span className="text-sm font-semibold mt-1 text-destructive">
-                      Скидка {course.discount}%
-                    </span>
-                  )}
-                </div>
 
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Clock className="h-4 w-4" />
-                  <span>{course.timeline}</span>
-                </div>
-
-                {course.id === "basic" && (
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                    <GraduationCap className="h-4 w-4" />
-                    <span>Студенческий тариф</span>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Clock className="h-4 w-4" />
+                    <span>{course.timeline}</span>
                   </div>
-                )}
-              </CardHeader>
 
-              <CardContent className="flex-1">
-                <ul className="space-y-3">
-                  {course.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-card-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                  {course.id === "basic" && (
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
+                      <GraduationCap className="h-4 w-4" />
+                      <span>Студенческий тариф</span>
+                    </div>
+                  )}
+                </CardHeader>
 
-              <CardFooter>
-                <PaymentButton
-                  amount={course.priceRub}
-                  description={course.name}
-                  buttonText={course.cta}
-                  variant={course.highlighted ? "default" : "outline"}
-                />
-              </CardFooter>
-            </Card>
-          ))}
+                <CardContent className="flex-1">
+                  <ul className="space-y-3">
+                    {course.includes.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <span className="text-card-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+
+                <CardFooter>
+                  <PaymentButton
+                    amount={course.priceRub}
+                    description={course.name}
+                    buttonText={course.cta}
+                    variant={course.highlighted ? "default" : "outline"}
+                  />
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center text-sm text-muted-foreground">
+            После курсов вы сможете продолжить с нами работу по упаковке проекта для инвесторов.
+          </p>
         </div>
-
-        <p className="mt-10 text-center text-sm text-muted-foreground">
-          После курсов вы сможете продолжить с нами работу по упаковке проекта для инвесторов.
-        </p>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
