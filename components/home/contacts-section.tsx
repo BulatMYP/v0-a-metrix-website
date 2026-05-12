@@ -86,22 +86,26 @@ export function ContactsSection() {
   }
 
   return (
-    <section id="contacts" className="bg-background py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 border-primary text-primary">
-            Свяжитесь с нами
-          </Badge>
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
-            Давайте начнём вашу историю успеха
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            У вас есть вопросы? Мы готовы помочь. Свяжитесь с нами через форму, телефон или лично в офисе.
-          </p>
-        </div>
+    <>
+      {/* Якорный элемент для корректной прокрутки с учётом фиксированного хедера */}
+      <div id="contacts-anchor" style={{ position: 'relative', top: '-100px' }}></div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      <section id="contacts" className="bg-background py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <Badge variant="outline" className="mb-4 border-primary text-primary">
+              Свяжитесь с нами
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
+              Давайте начнём вашу историю успеха
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              У вас есть вопросы? Мы готовы помочь. Свяжитесь с нами через форму, телефон или лично в офисе.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {/* Contact Info Cards */}
           {contactMethods.map((method, index) => (
             <Card key={index} className="border border-border bg-card">
@@ -282,7 +286,8 @@ export function ContactsSection() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   )
 }

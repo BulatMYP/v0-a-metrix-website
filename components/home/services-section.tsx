@@ -174,6 +174,9 @@ export function ServicesSection() {
           </p>
         </div>
 
+        {/* Якорный элемент для корректной прокрутки с учётом фиксированного хедера */}
+        <div id="services-cards" style={{ position: 'relative', top: '-100px' }}></div>
+
         {/* Services Grid */}
         <div className="grid grid-cols-1 gap-12 lg:gap-16 mb-24">
           {services.map((service, index) => (

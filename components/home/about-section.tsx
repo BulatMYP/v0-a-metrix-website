@@ -46,6 +46,9 @@ const unifiedAdvantage = "Мы предлагаем сквозной путь: �
 export function AboutSection() {
   return (
     <>
+      {/* Якорный элемент для корректной прокрутки с учётом фиксированного хедера */}
+      <div id="about-anchor" style={{ position: 'relative', top: '-100px' }}></div>
+
       {/* О компании */}
       <section id="about" className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-4 md:px-6">

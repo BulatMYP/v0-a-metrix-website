@@ -27,6 +27,9 @@ export function TestimonialsSection() {
           </h2>
         </div>
 
+        {/* Якорный элемент для корректной прокрутки с учётом фиксированного хедера */}
+        <div id="testimonials-cards" style={{ position: 'relative', top: '-100px' }}></div>
+
         <div className="grid gap-8 md:grid-cols-2">
           {testimonials.map((testimonial) => (
             <div

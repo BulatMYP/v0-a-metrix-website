@@ -67,23 +67,22 @@ const courses = [
 
 export function CoursesSection() {
   return (
-    <>
-      {/* Якорный элемент для корректной прокрутки с учётом фиксированного хедера */}
-      <div id="courses-anchor" style={{ position: 'relative', top: '-100px' }}></div>
-      
-      <section id="courses" className="py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 border-primary text-primary">B2C</Badge>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
-              Образовательные программы для вашего бизнеса
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              От первых шагов до привлечения инвестиций — выберите свой уровень.
-            </p>
-          </div>
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4 border-primary text-primary">B2C</Badge>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-balance text-foreground">
+            Образовательные программы для вашего бизнеса
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            От первых шагов до привлечения инвестиций — выберите свой уровень.
+          </p>
+        </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
+        {/* Якорный элемент для корректной прокрутки с учётом фиксированного хедера */}
+        <div id="courses-cards" style={{ position: 'relative', top: '-100px' }}></div>
+
+        <div className="grid gap-6 lg:grid-cols-3">
             {courses.map((course) => (
               <Card
                 key={course.id}
@@ -167,11 +166,10 @@ export function CoursesSection() {
             ))}
           </div>
 
-          <p className="mt-10 text-center text-sm text-muted-foreground">
-            После курсов вы сможете продолжить с нами работу по упаковке проекта для инвесторов.
-          </p>
-        </div>
-      </section>
-    </>
+        <p className="mt-10 text-center text-sm text-muted-foreground">
+          После курсов вы сможете продолжить с нами работу по упаковке проекта для инвесторов.
+        </p>
+      </div>
+    </section>
   )
 }
