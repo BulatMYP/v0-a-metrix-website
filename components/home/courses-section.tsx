@@ -8,7 +8,7 @@ const courses = [
     id: "basic",
     name: "Базовый: «Экономика и продажи»",
     icon: Rocket,
-    priceRub: 59900,
+    priceRub: 11,
     oldPriceRub: 79900,
     discount: 25,
     description: "Первый поток для студентов технических вузов. Фундамент для запуска бизнеса: финансы, маркетинг, продажи.",
