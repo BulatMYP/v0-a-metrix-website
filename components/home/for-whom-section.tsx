@@ -64,6 +64,9 @@ export function ForWhomSection() {
             Мы создаём ценность для каждого этапа вашего пути
           </h2>
         </div>
+
+        {/* Якорный элемент для корректной прокрутки с учётом фиксированного хедера */}
+        <div id="for-whom-cards" style={{ position: 'relative', top: '-100px' }}></div>
         
         <div className="grid gap-8 lg:grid-cols-2">
           {segments.slice(0, 2).map((segment) => (
