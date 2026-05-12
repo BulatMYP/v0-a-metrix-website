@@ -8,7 +8,7 @@ import { CustomLogo } from "@/components/custom-logo"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { href: "#courses", label: "Курсы" },
+  { href="#courses-anchor", label: "Курсы" },
   { href: "#services", label: "Услуги" },
   { href: "#for-whom", label: "Для кого" },
   { href: "#testimonials", label: "Отзывы" },
